@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grand_pet/src/widgest/custom_widgets.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
 
 class LoginPage extends StatefulWidget{
   static String id = 'login_page';
@@ -8,6 +10,13 @@ class LoginPage extends StatefulWidget{
 }
 
 class _LoginPageState extends State<LoginPage>{
+
+getMethod()async{
+  String theUrl = 'http/192.168.1.1';
+}
+
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

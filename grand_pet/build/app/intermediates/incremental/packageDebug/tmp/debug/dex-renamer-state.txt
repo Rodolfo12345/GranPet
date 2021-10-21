@@ -1,4 +1,4 @@
-#Thu Oct 14 14:24:35 CDT 2021
+#Tue Oct 19 14:28:00 CDT 2021
 base.0=C\:\\Users\\Rodolfo\\Documents\\GitHub\\GranPet\\grand_pet\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

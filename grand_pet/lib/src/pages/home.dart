@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grand_pet/src/pages/login_page.dart';
 import 'package:grand_pet/src/widgest/custom_widgets.dart';
 
 class HomePage extends StatefulWidget{
@@ -6,6 +7,8 @@ class HomePage extends StatefulWidget{
   @override
   _HomePageState createState() => _HomePageState();
 }
+
+///////////////Variables////////////
 
 class _HomePageState extends State<HomePage>{
 
@@ -25,24 +28,23 @@ class _HomePageState extends State<HomePage>{
 ///////////////////////Bar Navegation///////////////
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(70.0),
-          child: AppBar(
-            backgroundColor: Colors.transparent,///transparent
-            bottomOpacity: 0.0,
-            elevation: 0.0,
-            centerTitle: true,
-            iconTheme: const IconThemeData(color: Color(0xfffcbc5c), size: 40),
-            title: Image.asset('assets/Logo.png', alignment: FractionalOffset.topCenter, height: 50,), 
+            child: AppBar(
+              backgroundColor: Colors.transparent,///transparent
+              bottomOpacity: 0.0,
+              elevation: 0.0,
+              centerTitle: true,
+              iconTheme: const IconThemeData(color: Color(0xfffcbc5c), size: 40),
+              title: Image.asset('assets/Logo.png', alignment: FractionalOffset.topCenter, height: 50,), 
 
+            actions:[
+              IconButton(
+                icon: const Icon(Icons.help,size: 40,),
+                onPressed: () {},
+              ),
 
-          actions:[
-            IconButton(
-              icon: const Icon(Icons.help,size: 40,),
-              onPressed: () {},
+            ]
+
             ),
-
-          ]
-
-          ),
         ),
 ////////////////Menu Lateral/////////////////////////
         drawer: Barra_lateral(),
@@ -63,8 +65,9 @@ class _HomePageState extends State<HomePage>{
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.playlist_add,size: 30),
-              label: 'Registrar',
+              label: 'Agregar Venta',
               backgroundColor: Color(0xff7b333f),
+
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.settings,size: 30),
@@ -74,7 +77,24 @@ class _HomePageState extends State<HomePage>{
           ],
           currentIndex: _selectedIndex,
           selectedItemColor: Colors.amber,
-          onTap: _onItemTapped,
+          //onTap: _onItemTapped,
+
+
+          onTap: (_selectedIndex) {
+            setState(() 
+              {
+                if(_selectedIndex == 2)
+                {
+                  Navigator.pushNamed(context, VentasPage.id);
+                }
+
+                
+              }
+            );
+          },
+
+
+
         ),
 
 //////////<Cuerpo>////////////
