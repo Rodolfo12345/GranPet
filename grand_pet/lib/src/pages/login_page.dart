@@ -1,7 +1,6 @@
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:grand_pet/src/widgest/custom_widgets.dart';
-import 'package:http/http.dart' as http;
-import 'dart:async';
 
 class LoginPage extends StatefulWidget{
   static String id = 'login_page';
@@ -11,13 +10,32 @@ class LoginPage extends StatefulWidget{
 
 class _LoginPageState extends State<LoginPage>{
 
-getMethod()async{
-  String theUrl = 'http/192.168.1.1';
-}
+
+  /*@override
+  void initState() {
+    super.initState();
+    getAdministradores();
+  }
+
+  //Funciones
+  void getAdministradores() async{
+    CollectionReference collectionReference = 
+      FirebaseFirestore.instance.collection("Administradores");//hace referencia a la colleccion a obtener
+
+    QuerySnapshot Administradores = await collectionReference.get(); //hacemos una consulta a la coleccion
+    
+    //si la cantidad de documentso es diferente de cero
+    if(Administradores.docs.length != 0) //docs es la cantidad de documentos o registros en la collecion
+    {
+      for (var doc in Administradores.docs) {
+        print(doc.data());
+      }
+    }
+  }*/
 
 
+/////////////////////////////////////////
 
-  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(

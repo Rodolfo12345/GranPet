@@ -1,7 +1,10 @@
 import 'dart:ui';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:grand_pet/src/pages/home.dart';
-//zapato_size
+
+CollectionReference administradores = FirebaseFirestore.instance.collection("Administradores");
+
 class FondoPrincipal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -86,6 +89,13 @@ Widget bottomLogin() {
         ),
         onPressed: (){
           Navigator.pushNamed(context, HomePage.id);
+
+          /*await administradores.add({
+            'Correo': 'nameUser',
+            'Password': 'ageUser',
+            'Usuario': 'textNote',
+            'id_Administrador': 1
+          }).then((value) => print("Usuario Añadido"));*/
         }
       );
     },

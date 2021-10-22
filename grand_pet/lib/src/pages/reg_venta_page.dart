@@ -21,7 +21,7 @@ class _reg_venta_PageState extends State<VentasPage> {
             Column(
                 children: [
                   Expanded(
-                      //flex: 3,
+                      flex: 3,
                       child: Headerventas()
                   ),
                   Flexible(
