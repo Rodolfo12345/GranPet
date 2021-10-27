@@ -87,15 +87,15 @@ Widget bottomLogin() {
             color: Color(0xfffcbc5c),
           ),*/
         ),
-        onPressed: (){
+        onPressed: ()  async{//
           Navigator.pushNamed(context, HomePage.id);
-
-          /*await administradores.add({
+          
+          await administradores.add({
             'Correo': 'nameUser',
             'Password': 'ageUser',
             'Usuario': 'textNote',
             'id_Administrador': 1
-          }).then((value) => print("Usuario Añadido"));*/
+          }).then((value) => print("Usuario Añadido"));
         }
       );
     },

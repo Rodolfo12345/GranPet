@@ -1,4 +1,4 @@
-//import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:grand_pet/src/pages/home.dart';
 import 'package:grand_pet/src/pages/login_page.dart';
@@ -6,11 +6,11 @@ import 'package:grand_pet/src/pages/perfil_page.dart';
 import 'package:grand_pet/src/widgest/custom_widgets.dart';
 
 //=> runApp
-void main() {
-  //WidgetsFlutterBinding.ensureInitialized();
-  //await Firebase.initializeApp().then((value) {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp().then((value) {
     runApp(MyApp());
-  //});
+  });
 }
 
 /////////////Variables/////////////
