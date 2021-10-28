@@ -3,7 +3,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:grand_pet/src/pages/home.dart';
 
+//instanciamos la base de datos
 CollectionReference administradores = FirebaseFirestore.instance.collection("Administradores");
+
+//Variables
+var usuario = TextEditingController();
+var password = TextEditingController();
 
 class FondoPrincipal extends StatelessWidget {
   @override
@@ -67,7 +72,7 @@ Widget passwordTextField() {
             labelText: 'Contraseña',
           ),
           onChanged: (value){
-            
+            print('hola');
           },
         ),
       );
@@ -87,15 +92,52 @@ Widget bottomLogin() {
             color: Color(0xfffcbc5c),
           ),*/
         ),
-        onPressed: ()  async{//
+        onPressed: () async{
           Navigator.pushNamed(context, HomePage.id);
-          
-          await administradores.add({
+          //insertar datos
+          /*await administradores.add({
             'Correo': 'nameUser',
             'Password': 'ageUser',
             'Usuario': 'textNote',
             'id_Administrador': 1
           }).then((value) => print("Usuario Añadido"));
+          */
+
+          //Modificar datos
+          /*await administradores
+          .doc('dNESyMhvYDLTcToJ5qHI')
+          .update(
+            {
+            'Correo': 'Nuevo usuario',
+            'Password': '1234',
+            }
+          ).then((value) => print("Actualizacion completada"));
+          */
+
+          //Eliminar datos
+          /*await administradores
+          .doc('u7JJ2efJfWPU9pvN6r2H')//Oviamente ya no existe
+          .delete()
+          .then((value) => print("Eliminacion completada"));
+          */
+
+          //Obtener datos globales
+          /*QuerySnapshot users = await administradores.get();
+          if(users.docs.length != 0){
+            for(var doc in users.docs){
+              print(doc.data());
+            }
+          }*/
+          
+          //Consulta de un usuario
+          /*var usuario = await administradores.where('Usuario', isEqualTo: 'Rodolfo')
+          .snapshots()
+          .listen((result){
+            result.docs.forEach((result) {
+              print(result.data());
+            });
+          });
+          */
         }
       );
     },
