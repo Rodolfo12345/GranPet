@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:grand_pet/src/pages/home.dart';
 
 //Variables
 var usuario = '';
@@ -97,7 +98,7 @@ Widget bottomLogin() {
         onPressed: () async{
 
           //Cambio de pagina
-          //Navigator.pushNamed(context, HomePage.id);
+          Navigator.pushNamed(context, HomePage.id);
           
           /*if(password == '1234')
           {

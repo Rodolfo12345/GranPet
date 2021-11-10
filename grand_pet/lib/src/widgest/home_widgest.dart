@@ -81,6 +81,7 @@ class Background extends StatelessWidget {
     );
   }
 }
+
 ///<Historial de Ventas>///
 class PaddinHistorial extends StatelessWidget {
   @override
@@ -141,7 +142,7 @@ class _Listitem extends StatelessWidget {
         children: [
           Expanded(
             flex: 2,
-              child: Icon(Icons.monetization_on, color: Colors.white, size: 50,)
+              child: const Icon(Icons.monetization_on, color: Colors.white, size: 50,)
           ),
           Expanded(
             flex: 4,
@@ -152,13 +153,13 @@ class _Listitem extends StatelessWidget {
                   Expanded(
                       child: Container(
                         alignment: Alignment.topLeft,
-                        child: Text('Producto', style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),),
+                        child: const Text('Producto', style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),),
                       ),
                   ),
                   Expanded(
                     child: Container(
                       alignment: Alignment.center,
-                        child: Nombre()//Text('Premium', style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.w500))//
+                        child: const Text('Premium', style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.w500))//
                     ),
                   )
                 ]
@@ -188,33 +189,32 @@ class _Listitem extends StatelessWidget {
   }
 }
 
-
-class Nombre extends StatelessWidget {
-  //final String documentId;
-
-  //GetUserName(this.documentId);
+//Status Bar
+class StatusBar extends StatelessWidget {
+  const StatusBar({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: Colors.transparent,///transparent
+      bottomOpacity: 0.0,
+      elevation: 0.0,
+      centerTitle: true,
+      iconTheme: const IconThemeData(color: Color(0xfffcbc5c), size: 40),
+      title: Image.asset('assets/Logo.png', alignment: FractionalOffset.topCenter, height: 50,), 
 
-    return FutureBuilder<DocumentSnapshot>(
-      future: ventas.doc("NacAUlEx2QPwS4JD55NN").get(),
-      builder:
-        (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-          if (snapshot.hasError) {
-            return const Text("A ocurrido un herror");
-          }
+    actions:[
+      IconButton(
+        icon: const Icon(Icons.help,size: 40,),
+        onPressed: () {},
+      ),
 
-          if (snapshot.hasData && !snapshot.data!.exists) {
-            return const Text("El documento no existe");
-          }
+    ]
 
-          if (snapshot.connectionState == ConnectionState.done) {
-            Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
-            return Text("Usuario: ${data['Premium']}");
-          }
-          return const Text("Cargando");
-      },
     );
   }
 }
+
+//Status Comisiones

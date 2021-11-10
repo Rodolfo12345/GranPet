@@ -20,9 +20,8 @@ class _reg_venta_PageState extends State<VentasPage> {
           children:[
             Column(
                 children: [
-                  Expanded(
-                      flex: 3,
-                      child: Headerventas()
+                  Container(
+                    child: Headerventas()
                   ),
                   Flexible(
                     child: Row(
@@ -31,13 +30,13 @@ class _reg_venta_PageState extends State<VentasPage> {
                             flex: 4,
                             child: Container(
                               margin: EdgeInsets.only(left: 5),
-                              child: Text('Producto', style: TextStyle(fontSize: 30,color: Colors.deepOrangeAccent),),
+                              child: Text('Producto', style: TextStyle(fontSize: 28,color: Colors.deepOrangeAccent),),
                             )
                         ),
                         Expanded(
                           flex: 6,
                             child: Container(
-                              alignment: Alignment.centerLeft,
+                              alignment: Alignment.centerRight,
                               child: DropdownButton(
                                 iconSize: 30,
                                 items: _lista.map((String a){
@@ -50,12 +49,12 @@ class _reg_venta_PageState extends State<VentasPage> {
                                      _muestra = contenido!;
                                   })
                                 },
-                                hint: Text(_muestra, style: TextStyle(fontSize: 20),),
+                                hint: Text(_muestra, style: TextStyle(fontSize: 18),),
                               ),
                             )
                         )
                       ],
-                    )
+                    ),
                   ),
                   Expanded(
                       flex: 6,
@@ -64,7 +63,6 @@ class _reg_venta_PageState extends State<VentasPage> {
                           child:
                           Stack(
                               children:[
-
                                 AreaRegistro()
                               ]
                           )
