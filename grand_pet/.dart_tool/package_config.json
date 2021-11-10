@@ -152,6 +152,24 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "google_sign_in",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in-5.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "google_sign_in_platform_interface",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in_platform_interface-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "google_sign_in_web",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in_web-0.10.0+3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "http",
       "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.13.4",
       "packageUri": "lib/",
@@ -248,6 +266,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "quiver",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/quiver-3.0.1+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///C:/src/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -314,7 +338,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-10-27T01:11:02.645193Z",
+  "generated": "2021-11-09T18:23:36.425537Z",
   "generator": "pub",
   "generatorVersion": "2.14.4"
 }

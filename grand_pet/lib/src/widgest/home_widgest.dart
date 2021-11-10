@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
-
 import 'package:grand_pet/src/pages/perfil_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+CollectionReference administradores = FirebaseFirestore.instance.collection("Administradores");
+CollectionReference ventas = FirebaseFirestore.instance.collection("Ventas");
 
 class Barra_lateral extends StatelessWidget {
   @override
@@ -155,7 +158,7 @@ class _Listitem extends StatelessWidget {
                   Expanded(
                     child: Container(
                       alignment: Alignment.center,
-                        child: Text('Premium', style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.w500))
+                        child: Nombre()//Text('Premium', style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.w500))//
                     ),
                   )
                 ]
@@ -181,6 +184,37 @@ class _Listitem extends StatelessWidget {
               ))
         ],
       ),
+    );
+  }
+}
+
+
+class Nombre extends StatelessWidget {
+  //final String documentId;
+
+  //GetUserName(this.documentId);
+
+  @override
+  Widget build(BuildContext context) {
+
+    return FutureBuilder<DocumentSnapshot>(
+      future: ventas.doc("NacAUlEx2QPwS4JD55NN").get(),
+      builder:
+        (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return const Text("A ocurrido un herror");
+          }
+
+          if (snapshot.hasData && !snapshot.data!.exists) {
+            return const Text("El documento no existe");
+          }
+
+          if (snapshot.connectionState == ConnectionState.done) {
+            Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
+            return Text("Usuario: ${data['Premium']}");
+          }
+          return const Text("Cargando");
+      },
     );
   }
 }
