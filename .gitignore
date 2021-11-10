@@ -1,2 +1,8 @@
 .idea/
 .vscode/
+grand_pet/.dart_tool/
+grand_pet/build/
+grand_pet/lib/.packages
+grand_pet/lib/.flutter-plugins
+grand_pet/lib/.flutter-plugins-dependencies
+C:\Users\Nadri\.vscode\proyecto\GranPet\grand_pet\build
