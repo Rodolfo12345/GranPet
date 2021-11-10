@@ -22,6 +22,18 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         //home: MyStatefulWidget(),
         initialRoute: LoginPage.id,
+
+        //Themas definidos
+        theme: ThemeData(
+          brightness: Brightness.light,
+          primaryColor: Colors.amber,
+        ),
+        darkTheme: ThemeData(
+          brightness: Brightness.dark,
+          primaryColor: Colors.amberAccent,
+        ),
+
+        //Rutas de slas paginas por nombre asignado de id
         routes: {
           LoginPage.id : (context) => LoginPage(),
           HomePage.id : (context) => HomePage(),
@@ -31,3 +43,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }  
+

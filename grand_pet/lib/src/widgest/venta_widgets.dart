@@ -71,62 +71,53 @@ class AreaRegistro extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              //flex: 1,
-              child: TextField(
-                keyboardType: TextInputType.number,
-                cursorColor: const Color(0xfffcbc5c),
-                decoration: const InputDecoration(
-                  icon: Icon(Icons.date_range_outlined),
-                  labelText: 'Lote',
-                ),
-                onChanged: (value){},
+              child: Column(
+                children: [
+                  TextField(
+                    keyboardType: TextInputType.number,
+                    cursorColor: const Color(0xfffcbc5c),
+                    decoration: const InputDecoration(
+                      icon: Icon(Icons.date_range_outlined),
+                      labelText: 'Lote',
+                    ),
+                    onChanged: (value){},
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top:45),
+                      child: TextField(
+                        keyboardType: TextInputType.number,
+                        cursorColor: const Color(0xfffcbc5c),
+                        decoration: const InputDecoration(
+                          icon: Icon(Icons.now_widgets_outlined),
+                          labelText: 'Cantidad',
+                        ),
+                        onChanged: (value){},
+                      )
+                  )
+                ],
               ),
             ),
             Expanded(
-              //flex: 1,
-              child: TextField(
-                keyboardType: TextInputType.number,
-                cursorColor: const Color(0xfffcbc5c),
-                decoration: const InputDecoration(
-                  icon: Icon(Icons.now_widgets_outlined),
-                  labelText: 'Cantidad',
-                  ),
-                  onChanged: (value){},
-              )
-            ),
-            Expanded(
-              flex: 1,
-                child: Center(
-                    child:Container(
+                child: Column(
+                  children: [
+                    Container(
                       child: ElevatedButton.icon(
-                        onPressed: () {print('Guardado!');},//hace un print en la consola
+                        onPressed: () {print('Foto cargada conexito!');},//hace un print en la consola
                         icon: Icon(Icons.add_photo_alternate_outlined, color: Colors.white,size: 35),
                         label: Text('Subir foto', style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),),
-                        style: ElevatedButton.styleFrom(
-                            shadowColor: Colors.black,
-                            onPrimary: Colors.white,
-                        ),
-                      ),
-                      )
+                          style: ElevatedButton.styleFrom(shadowColor: Colors.black, onPrimary: Colors.white,),),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top:40),
+                      child: ElevatedButton.icon(
+                        onPressed: () {print('Guardado!');},
+                        icon: Icon(Icons.upload, color: Colors.white,size: 35),
+                        label: Text('Guardar', style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),),
+                        style: ElevatedButton.styleFrom(shadowColor: Colors.black,onPrimary: Colors.white,onSurface: Colors.red),),
+                    )
+                  ],
                 ),
             ),
-            Flexible(
-              //flex: 1,
-                child: Center(
-                  child: Container(
-                    child: ElevatedButton.icon(
-                      onPressed: () {print('Guardado!');},
-                      icon: Icon(Icons.upload, color: Colors.white,size: 35),
-                      label: Text('Guardar', style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),),
-                      style: ElevatedButton.styleFrom(
-                        shadowColor: Colors.black,
-                        onPrimary: Colors.white,
-                        onSurface: Colors.red
-                      ),
-                    ),
-                  ),
-                )
-            )
           ],
         )
     );

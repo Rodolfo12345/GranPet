@@ -38,6 +38,7 @@ class _LoginPageState extends State<LoginPage>{
 
   Widget build(BuildContext context) {
     return SafeArea(
+      top: true,
       child: Scaffold(
         body: Center(
           child: Column(
@@ -54,10 +55,20 @@ class _LoginPageState extends State<LoginPage>{
               passwordTextField(),
               const SizedBox(height: 25.0,),
               bottomLogin(),
+
+              Flexible(
+                child: (
+                  Prueba()
+                ),
+              )
+
             ],
+            
           ),
         ),
       ),
     );
   }
 }
+
+//Validacion

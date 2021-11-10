@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
-
 import 'package:grand_pet/src/pages/perfil_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+CollectionReference administradores = FirebaseFirestore.instance.collection("Administradores");
+CollectionReference ventas = FirebaseFirestore.instance.collection("Ventas");
 
 class Barra_lateral extends StatelessWidget {
   @override
@@ -78,6 +81,7 @@ class Background extends StatelessWidget {
     );
   }
 }
+
 ///<Historial de Ventas>///
 class PaddinHistorial extends StatelessWidget {
   @override
@@ -138,7 +142,7 @@ class _Listitem extends StatelessWidget {
         children: [
           Expanded(
             flex: 2,
-              child: Icon(Icons.monetization_on, color: Colors.white, size: 50,)
+              child: const Icon(Icons.monetization_on, color: Colors.white, size: 50,)
           ),
           Expanded(
             flex: 4,
@@ -149,13 +153,13 @@ class _Listitem extends StatelessWidget {
                   Expanded(
                       child: Container(
                         alignment: Alignment.topLeft,
-                        child: Text('Producto', style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),),
+                        child: const Text('Producto', style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),),
                       ),
                   ),
                   Expanded(
                     child: Container(
                       alignment: Alignment.center,
-                        child: Text('Premium', style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.w500))
+                        child: const Text('Premium', style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.w500))//
                     ),
                   )
                 ]
@@ -184,3 +188,33 @@ class _Listitem extends StatelessWidget {
     );
   }
 }
+
+//Status Bar
+class StatusBar extends StatelessWidget {
+  const StatusBar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: Colors.transparent,///transparent
+      bottomOpacity: 0.0,
+      elevation: 0.0,
+      centerTitle: true,
+      iconTheme: const IconThemeData(color: Color(0xfffcbc5c), size: 40),
+      title: Image.asset('assets/Logo.png', alignment: FractionalOffset.topCenter, height: 50,), 
+
+    actions:[
+      IconButton(
+        icon: const Icon(Icons.help,size: 40,),
+        onPressed: () {},
+      ),
+
+    ]
+
+    );
+  }
+}
+
+//Status Comisiones

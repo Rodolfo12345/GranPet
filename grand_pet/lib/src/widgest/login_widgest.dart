@@ -88,20 +88,22 @@ Widget bottomLogin() {
       return ElevatedButton(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-          child: //const Text('Iniciar Secion'),
+          child: const Text('Iniciar Secion'),
           /*decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
-            color: Color(0xfffcbc5c),
+            color: const Color(0xfffcbc5c),
           ),*/
-          Nombre()
         ),
 
         onPressed: () async{
 
-          if(password == '1234')
+          //Cambio de pagina
+          Navigator.pushNamed(context, HomePage.id);
+          
+          /*if(password == '1234')
           {
             Navigator.pushNamed(context, HomePage.id);
-          }
+          }*/
 
           //insertar datos
           /*await administradores.add({
@@ -146,11 +148,44 @@ Widget bottomLogin() {
               print(result.data());
             });
           });*/
-          print(usuario);
-        }
-      );
-    },
-  ); 
+
+          //Listado de usuarios
+          /*FirebaseFirestore.instance
+            .collection('Administradores')
+            .where('Usuario', isEqualTo: 'Rodolfo')
+            .get()
+            .then((resultado) => {
+            resultado.docs.forEach((elementos) {
+              print(elementos.data());
+            })
+          });*/
+
+        StreamBuilder(
+          stream: administradores.where('Usuario', isEqualTo: 'Rodolfo').snapshots(),
+          builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot)
+          {
+            if(!snapshot.hasData) return CircularProgressIndicator();
+            return ListView.builder(
+              itemCount: snapshot.data!.docs.length,
+              itemBuilder: (BuildContext context, int index){
+                //String id = snapshot.data!.docs[index].id;
+                String usuario = snapshot.data!.docs[index].get('Usuario');
+                print(usuario);
+                return Card(
+                  child: Column(
+                    children: [
+                      Text('Usuario: $usuario')
+                    ],
+                  ),
+                );
+              });
+          });
+
+
+
+
+        });   
+    }); 
 }
 
 //Metodos privados
@@ -163,6 +198,37 @@ Widget _ImageLogin() {
       ),
     ),
   );
+}
+
+Widget Prueba(){
+    return Scaffold(
+      body: Center(
+        child: (
+          StreamBuilder(
+          stream: administradores.where('Usuario', isEqualTo: 'Rodolfo').snapshots(),
+          builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot)
+          {
+            if(!snapshot.hasData) return CircularProgressIndicator();
+            return ListView.builder(
+              itemCount: snapshot.data!.docs.length,
+              itemBuilder: (BuildContext context, int index){
+                //String id = snapshot.data!.docs[index].id;
+                String usuario = snapshot.data!.docs[index].get('Usuario');
+                print(usuario);
+                return Card(
+                  child: Column(
+                    children: [
+                      Text('Usuario: $usuario')
+                      
+                    ],
+                  ),
+                );
+              });
+          })
+        ),
+      ),
+    );
+  
 }
 
 
@@ -186,34 +252,9 @@ class Nombre extends StatelessWidget {
             return const Text("El documento no existe");
           }
 
-           if (snapshot.connectionState == ConnectionState.done) {
-            Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
-            return Text("Usuario: ${data['NombreUsuario']} ${data['IdUsuario']}");
-          }
-          return const Text("Cargando");
-      },
-    );
-  }
-}
-
-class Login {
-  Widget build(BuildContext context) {
-    var a = '';
-    return FutureBuilder<DocumentSnapshot>(
-      future: administradores.doc("z8AFLHGvIjs8ERSk08hJ").get(),
-      builder:
-        (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-          if (snapshot.hasError) {
-            return const Text("A ocurrido un herror");
-          }
-
-          if (snapshot.hasData && !snapshot.data!.exists) {
-            return const Text("El documento no existe");
-          }
-
           if (snapshot.connectionState == ConnectionState.done) {
             Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
-            return Text("Usuario: ${data['Usuario']}");
+            return Text("Usuario: ${data['Premium']}");
           }
           return const Text("Cargando");
       },
