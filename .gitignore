@@ -9,3 +9,6 @@ C:\Users\Nadri\.vscode\proyecto\GranPet\grand_pet\build
 android/
 assets/
 ios/
+build/
+android/
+.dart_tool/
