@@ -14,7 +14,8 @@ class Barra_lateral extends StatelessWidget {
         color: const Color(0xfffcbc5c),
         child: Column(
           children:[
-            Container(
+            
+            /*Container(
               padding: const EdgeInsets.all(20),
               width: double.infinity,
               height: 200,
@@ -24,14 +25,49 @@ class Barra_lateral extends StatelessWidget {
       
                 //child: Text('Usuario',style: TextStyle(fontSize: 50),),
               ),
+            ),*/
+            const DrawerHeader(
+              child:CircleAvatar(
+                radius: 100.0,
+                backgroundColor: Colors.brown,
+                backgroundImage: AssetImage("assets/Login.png"),
+              ) 
             ),
             
             Flexible(
               child: ListView(
                 children: [
                   ListTile (
-                    leading: Icon(Icons.people),
-                    title: Text('Perfil', ),
+                    leading: const Icon(Icons.people, color: Colors.white, size: 40,),
+                    title: const Text('Perfil', style: TextStyle (color: Colors.white, fontSize: 30)),
+                    onTap: (){
+                      Navigator.pushNamed(context, PerfilPage.id);
+                    },
+                  ),
+                  ListTile (
+                    leading: const Icon(Icons.arrow_circle_up ,color: Colors.white, size: 40,),
+                    title: const Text('Nivel', style: TextStyle (color: Colors.white, fontSize: 30)),
+                    onTap: (){
+                      Navigator.pushNamed(context, PerfilPage.id);
+                    },
+                  ),
+                  ListTile (
+                    leading: const Icon(Icons.monetization_on, color: Colors.white, size: 40,),
+                    title: const Text('Comisiones', style: TextStyle (color: Colors.white, fontSize: 30)),
+                    onTap: (){
+                      Navigator.pushNamed(context, PerfilPage.id);
+                    },
+                  ),
+                  ListTile (
+                    leading: const Icon(Icons.history, color: Colors.white, size: 40,),
+                    title: const Text('Historial', style: TextStyle (color: Colors.white, fontSize: 30)),
+                    onTap: (){
+                      Navigator.pushNamed(context, PerfilPage.id);
+                    },
+                  ),
+                  ListTile (
+                    leading: const Icon(Icons.calculate, color: Colors.white, size: 40,),
+                    title: const Text('Calculadora', style: TextStyle (color: Colors.white, fontSize: 30)),
                     onTap: (){
                       Navigator.pushNamed(context, PerfilPage.id);
                     },
@@ -40,10 +76,14 @@ class Barra_lateral extends StatelessWidget {
               ),
             ),
 
-
             const ListTile(
               leading: Icon(Icons.lightbulb_outline, color: Colors.white, size: 35,),
-              title: Text('Modo Oscuro', style: TextStyle(color: Colors.white, fontSize: 25),),
+              title: Text('Tema', style: TextStyle(color: Colors.white, fontSize: 25),),
+              
+            ),
+            const ListTile(
+              leading: Icon(Icons.settings, color: Colors.white, size: 35,),
+              title: Text('Configuracion', style: TextStyle(color: Colors.white, fontSize: 25),),
               
             ),
             const ListTile(
@@ -55,9 +95,7 @@ class Barra_lateral extends StatelessWidget {
                   decorationThickness: 2.5,//grosor del subrayado
                   height: 2,
                 ),
-                
               ),
-              
             ),
           ],
         ),
@@ -81,7 +119,7 @@ class PaddinHistorial extends StatelessWidget {
           ),
 
           //de aqui en adelante tiro codigo el master Noé
-          child: SliderList(),
+          child: const SliderList(),
           //de aqui para arriba tiro codigo el master Noé
 
         ),

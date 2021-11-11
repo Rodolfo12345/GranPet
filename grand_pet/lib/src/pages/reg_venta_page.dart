@@ -17,7 +17,6 @@ class _reg_venta_PageState extends State<VentasPage> {
       top: true,
       child: Scaffold(
         body: Center(
-          
           child: Column(
             //mainAxisAlignment: MainAxisAlignment.center,
             children:[
@@ -63,8 +62,6 @@ class _reg_venta_PageState extends State<VentasPage> {
               Guardar(),
               const SizedBox(height: 25.0,),
               Fotografia()
-              
-              
             ]
           )
         )
