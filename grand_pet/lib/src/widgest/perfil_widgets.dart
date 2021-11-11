@@ -188,7 +188,7 @@ class Datos extends StatelessWidget {
             shape: BoxShape.rectangle,
             //border: Border(bottom: (BorderSide(color: Colors.black, width: 3.0)))
         ),*/
-        child: Text('Promo vendedor',
+        child: const Text('Promo vendedor',
           textAlign: TextAlign.center, style: TextStyle(
               color: Color(0xff7b333f),
               fontSize: 30,
@@ -217,7 +217,7 @@ class Datos extends StatelessWidget {
             shape: BoxShape.rectangle,
             //border: Border(bottom: (BorderSide(color: Colors.black, width: 3.0)))
         ),*/
-        child: Text('Santa Ana pacueco',
+        child: const Text('Santa Ana pacueco',
           textAlign: TextAlign.center, style: TextStyle(
               color: Color(0xff7b333f),
               fontSize: 30,
@@ -229,5 +229,21 @@ class Datos extends StatelessWidget {
           ),),
       ),
     ]);
+  }
+}
+
+class Background extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(  
+        image:DecorationImage(
+          image: ExactAssetImage('assets/Logo.png'),
+          
+          colorFilter: ColorFilter.mode(Colors.white,  BlendMode.softLight, ),/*BlendMode.softLight*/
+          fit: BoxFit.contain,
+        ) 
+      ),
+    );
   }
 }

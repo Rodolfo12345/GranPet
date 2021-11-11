@@ -65,23 +65,6 @@ class Barra_lateral extends StatelessWidget {
     );
   }
 }
-
-class Background extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(  
-        image:DecorationImage(
-          image: ExactAssetImage('assets/Logo.png'),
-          
-          colorFilter: ColorFilter.mode(Colors.white,  BlendMode.softLight, ),/*BlendMode.softLight*/
-          fit: BoxFit.contain,
-        ) 
-      ),
-    );
-  }
-}
-
 ///<Historial de Ventas>///
 class PaddinHistorial extends StatelessWidget {
   @override
@@ -140,9 +123,9 @@ class _Listitem extends StatelessWidget {
       //y permitira que se pequien unos al lado de los otros
       child: Row(
         children: [
-          Expanded(
+          const Expanded (
             flex: 2,
-              child: const Icon(Icons.monetization_on, color: Colors.white, size: 50,)
+              child: Icon(Icons.monetization_on, color: Colors.white, size: 50,)
           ),
           Expanded(
             flex: 4,
@@ -172,13 +155,13 @@ class _Listitem extends StatelessWidget {
                   Expanded(
                     child: Container(
                       alignment: Alignment.topRight,
-                        child: Text('15/oct/2021', style: TextStyle(color: Colors.white, fontSize: 20, fontStyle: FontStyle.italic, fontWeight: FontWeight.w500),)
+                        child: const Text('15/oct/2021', style: TextStyle(color: Colors.white, fontSize: 20, fontStyle: FontStyle.italic, fontWeight: FontWeight.w500),)
                     ),
                   ),
                   Expanded(
                     child: Container(
                       alignment: Alignment.centerRight,
-                        child: Text('Cantidad: 16 sacos', style: TextStyle(color: Colors.white, fontSize: 18,fontWeight: FontWeight.w400),)
+                        child: const Text('Cantidad: 16 sacos', style: TextStyle(color: Colors.white, fontSize: 18,fontWeight: FontWeight.w400),)
                     ),
                   )
                 ],
@@ -203,7 +186,8 @@ class StatusBar extends StatelessWidget {
       elevation: 0.0,
       centerTitle: true,
       iconTheme: const IconThemeData(color: Color(0xfffcbc5c), size: 40),
-      title: Image.asset('assets/Logo.png', alignment: FractionalOffset.topCenter, height: 50,), 
+      title: const Text("GrandPet", textAlign: TextAlign.center, style: TextStyle (color: Color(0xff7b333f), fontSize: 40)),
+      //title: Image.asset('assets/Logo.png', alignment: FractionalOffset.topCenter, height: 50,), 
 
     actions:[
       IconButton(

@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grand_pet/src/widgest/custom_widgets.dart';
-
 
 class VentasPage extends StatefulWidget {
   static String id = 'RegistroVenta_page';
@@ -9,69 +7,71 @@ class VentasPage extends StatefulWidget {
   _reg_venta_PageState createState() => _reg_venta_PageState();
 }
 
+//variables
 final _lista = ['Premium', 'Super premium', 'Holistico'];
-String _muestra = 'Selecciona una opción';
+String _muestra = 'Opciones';
 
 class _reg_venta_PageState extends State<VentasPage> {
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Stack(
-          children:[
-            Column(
-                children: [
-                  Container(
-                    child: Headerventas()
-                  ),
-                  Flexible(
-                    child: Row(
-                      children: [
-                        Expanded(
-                            flex: 4,
-                            child: Container(
-                              margin: EdgeInsets.only(left: 5),
-                              child: Text('Producto', style: TextStyle(fontSize: 28,color: Colors.deepOrangeAccent),),
-                            )
-                        ),
-                        Expanded(
-                          flex: 6,
-                            child: Container(
-                              alignment: Alignment.centerRight,
-                              child: DropdownButton(
-                                iconSize: 30,
-                                items: _lista.map((String a){
-                                  return DropdownMenuItem(
-                                      value: a,
-                                      child: Text(a));
-                                }).toList(),
-                                onChanged: (String? contenido)=>{
-                                  setState((){
-                                     _muestra = contenido!;
-                                  })
-                                },
-                                hint: Text(_muestra, style: TextStyle(fontSize: 18),),
-                              ),
-                            )
-                        )
-                      ],
+    return SafeArea(
+      top: true,
+      child: Scaffold(
+        body: Center(
+          
+          child: Column(
+            //mainAxisAlignment: MainAxisAlignment.center,
+            children:[
+              Flexible(
+                child: (
+                  HederVentas()
+                ),
+              ),
+              Flexible(
+                child: Row(
+                  children: [
+                    const Text("Producto: ", 
+                      textAlign: TextAlign.center, style: TextStyle(
+                        color: Color(0xfffcbc5c), 
+                        fontSize: 25,
+                      ),
                     ),
-                  ),
-                  Expanded(
-                      flex: 6,
-                      child:
-                      Container(
-                          child:
-                          Stack(
-                              children:[
-                                AreaRegistro()
-                              ]
-                          )
-                      )
-                  )
-                ]
-            ),
-          ],
-        ) //Metodos
+                    const Spacer(),
+                    Flexible(
+                      flex: 2,
+                      child: DropdownButton(
+                        items: _lista.map((String a){
+                          return DropdownMenuItem(
+                              value: a,
+                              child: Text(a));
+                        }).toList(),
+                        onChanged: (String? contenido)=>{
+                          setState((){
+                              _muestra = contenido!;
+                          })
+                        },
+                        hint: Text(_muestra, style: const TextStyle(fontSize: 20),),
+                        )
+                    ),
+                  ],
+                )
+              ),
+              const SizedBox(height: 30.0,),
+              Lote(),
+              const SizedBox(height: 25.0,),
+              Cantidad(),
+              const SizedBox(height: 25.0,),
+              Guardar(),
+              const SizedBox(height: 25.0,),
+              Fotografia()
+              
+              
+            ]
+          )
+        )
+      )
     );
   }
 }
+
+//Navigation Bar
+
