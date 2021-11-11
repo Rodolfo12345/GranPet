@@ -28,7 +28,48 @@ class _HomePageState extends State<HomePage>{
 
 /////////////////Status Navegacion///////////////////
 
-        bottomNavigationBar: NavegaconBar(),
+        bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.monetization_on,size: 30),
+            label: 'Comisiones',
+            backgroundColor: Color(0xff7b333f),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.flag_rounded,size: 30),
+            label: 'Meta',
+            backgroundColor: Color(0xff7b333f),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.playlist_add,size: 30),
+            label: 'Agregar Venta',
+            backgroundColor: Color(0xff7b333f),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings,size: 30),
+            label: 'Ajustes',
+            backgroundColor: Color(0xff7b333f),
+          ),
+        ],
+        //currentIndex: _selectedIndex,
+        currentIndex: _selectedIndex,
+        selectedItemColor: const Color(0xfffcbc5c),
+
+        onTap: (int i) {
+          setState(() 
+            {
+              _selectedIndex = i;
+              //Cambio de pagina a Ventas
+              if(_selectedIndex == 2)//2
+              {
+                Navigator.pushNamed(context, VentasPage.id);
+              }
+            }
+          );
+        },
+      ),
+      
+        
 
 //////////<Cuerpo>////////////
 

@@ -3,123 +3,118 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grand_pet/src/pages/home.dart';
 
-class Headerventas extends StatelessWidget {
+class HederVentas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       top: true,
-      bottom: false,
-      child: Padding(
+      child: Padding(/*Container*/
         padding: const EdgeInsets.symmetric(horizontal: 5),
-        child:Stack(
-            children:[
-              Column(
-                  children:[
-                    //Volver
-                    Container(
-                      margin: const EdgeInsets.only(top: 5),
-                      height: 40,
-                      width: double.infinity,
-                      decoration: const BoxDecoration(
-                          color: Color(0xfffcbc5c),
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(10),
-                            topLeft: Radius.circular(10),
-                          )
-                      ),
-                      child: ListView(
-                        children: [
-                          ListTile(
-                            leading: Icon(Icons.chevron_left_sharp, size: 40, color: Colors.white,),
-                            title: const Text("Volver", style: TextStyle(color: Colors.white, fontSize: 25),),
-                            onTap: (){
-                              Navigator.pushNamed(context, HomePage.id);
-                            },
-                          )
-                        ],
-                      ),
-                    ),
-                    //este es el container inferior en donde esta el texto de registrar venta
-                    Container(
-                      width: double.infinity,
-                      height: 100,
-                      decoration: const BoxDecoration(
-                        //color: Colors.red,
-                          color: Color(0xfffcbc5c),
-                          borderRadius: BorderRadius.only(
-                            bottomRight: Radius.circular(10),
-                            bottomLeft: Radius.circular(10),
-                          )
-                      ),
-                      child: Center(
-                          child: Text(" Registar Venta", style: TextStyle(color: Colors.white, fontSize: 40,fontWeight: FontWeight.bold))),
-                    ),
-                  ]
+        child: Container(
+          margin: const EdgeInsets.only(top: 5),
+          width: double.infinity,
+          height: 400,
+          decoration: BoxDecoration(
+            color: const Color(0xfffcbc5c),
+            borderRadius: BorderRadius.circular(20)
+          ),
+          child: ListView(
+            children: [
+              ListTile(
+                leading: const Icon(Icons.chevron_left_sharp, size: 40, color: Colors.white,),
+                title: const Text("Volver", style: TextStyle(color: Colors.white, fontSize: 25),),
+                onTap: (){
+                  Navigator.pushNamed(context, HomePage.id);
+                },
+              ),
+              const Text(
+                'Registrar Ventas',
+                textAlign: TextAlign.center, style: TextStyle(
+                  color: Colors.white, 
+                  fontSize: 40,
+
+                )
               )
             ]
-        ),
-      ),
+          )
+        )
+      )
     );
   }
 }
 
+Widget Lote() {
+  return StreamBuilder(
+    builder:(BuildContext context, AsyncSnapshot snapshot){
+      return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        child: TextField(
+          keyboardType: TextInputType.emailAddress,
+          cursorColor: const Color(0xfffcbc5c),
+          decoration: const InputDecoration(
+            icon: Icon(Icons.date_range_outlined),
+            labelText: 'Lote',
+          ),
 
-class AreaRegistro extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        child: Column(
-          children: [
-            Expanded(
-              child: Column(
-                children: [
-                  TextField(
-                    keyboardType: TextInputType.number,
-                    cursorColor: const Color(0xfffcbc5c),
-                    decoration: const InputDecoration(
-                      icon: Icon(Icons.date_range_outlined),
-                      labelText: 'Lote',
-                    ),
-                    onChanged: (value){},
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top:45),
-                      child: TextField(
-                        keyboardType: TextInputType.number,
-                        cursorColor: const Color(0xfffcbc5c),
-                        decoration: const InputDecoration(
-                          icon: Icon(Icons.now_widgets_outlined),
-                          labelText: 'Cantidad',
-                        ),
-                        onChanged: (value){},
-                      )
-                  )
-                ],
-              ),
-            ),
-            Expanded(
-                child: Column(
-                  children: [
-                    Container(
-                      child: ElevatedButton.icon(
-                        onPressed: () {print('Foto cargada conexito!');},//hace un print en la consola
-                        icon: Icon(Icons.add_photo_alternate_outlined, color: Colors.white,size: 35),
-                        label: Text('Subir foto', style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),),
-                          style: ElevatedButton.styleFrom(shadowColor: Colors.black, onPrimary: Colors.white,),),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top:40),
-                      child: ElevatedButton.icon(
-                        onPressed: () {print('Guardado!');},
-                        icon: Icon(Icons.upload, color: Colors.white,size: 35),
-                        label: Text('Guardar', style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),),
-                        style: ElevatedButton.styleFrom(shadowColor: Colors.black,onPrimary: Colors.white,onSurface: Colors.red),),
-                    )
-                  ],
-                ),
-            ),
-          ],
-        )
-    );
-  }
+          onChanged: (value){
+            
+          },
+        ),
+      );
+    }
+  ); 
+}
+
+Widget Cantidad() {
+  return StreamBuilder(
+    builder:(BuildContext context, AsyncSnapshot snapshot){
+      return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        child: TextField(
+          keyboardType: TextInputType.emailAddress,
+          cursorColor: const Color(0xfffcbc5c),
+          decoration: const InputDecoration(
+            icon: Icon(Icons.now_widgets_outlined),
+            labelText: 'Cantidad',
+          ),
+
+          onChanged: (value){
+            
+          },
+        ),
+      );
+    }
+  ); 
+}
+
+Widget Guardar() {
+  return StreamBuilder(
+    builder:(BuildContext context, AsyncSnapshot snapshot){
+      return ElevatedButton(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+          child: const Text('Guardar'),
+        ),
+        onPressed: () async{
+          //Navigator.pushNamed(context, HomePage.id);
+        }
+      );
+    }
+  );
+}
+
+Widget Fotografia() {
+  return StreamBuilder(
+    builder:(BuildContext context, AsyncSnapshot snapshot){
+      return ElevatedButton(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+          child: const Text('Subir Fotografia'),
+        ),
+        onPressed: () async{
+          //Navigator.pushNamed(context, HomePage.id);
+        }
+      );
+    }
+  );
 }
