@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grand_pet/src/widgest/custom_widgets.dart';
+import 'package:grand_pet/src/widgest/venta_widgets.dart';
 
 class VentasPage extends StatefulWidget {
   static String id = 'RegistroVenta_page';
@@ -27,15 +28,15 @@ class _reg_venta_PageState extends State<VentasPage> {
               ),
               Flexible(
                 child: Row(
-                  children: [
-                    const Text("Producto: ", 
+                  children: const [
+                    Text("Productos: ", 
                       textAlign: TextAlign.center, style: TextStyle(
                         color: Color(0xfffcbc5c), 
                         fontSize: 25,
                       ),
                     ),
-                    const Spacer(),
-                    Flexible(
+                    Spacer(),
+                    /*Flexible(
                       flex: 2,
                       child: DropdownButton(
                         items: _lista.map((String a){
@@ -50,17 +51,27 @@ class _reg_venta_PageState extends State<VentasPage> {
                         },
                         hint: Text(_muestra, style: const TextStyle(fontSize: 20),),
                         )
-                    ),
+                    ),*/
                   ],
                 )
               ),
-              const SizedBox(height: 30.0,),
+              /*const SizedBox(height: 30.0,),
               Lote(),
               const SizedBox(height: 25.0,),
               Cantidad(),
               const SizedBox(height: 25.0,),
               Guardar(),
               const SizedBox(height: 25.0,),
+              Fotografia()*/
+              const SizedBox(height: 30.0,)
+,             Premium(),
+              const SizedBox(height: 30.0,),
+              Olistico(),
+              const SizedBox(height: 30.0,),
+              SuperPremium(),
+              const SizedBox(height: 30.0,),
+              Guardar(),
+              const SizedBox(height: 30.0,),
               Fotografia()
             ]
           )
@@ -69,6 +80,3 @@ class _reg_venta_PageState extends State<VentasPage> {
     );
   }
 }
-
-//Navigation Bar
-

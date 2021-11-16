@@ -121,7 +121,7 @@ class PaddinHistorial extends StatelessWidget {
           //de aqui en adelante tiro codigo el master Noé
           child: const SliderList(),
           //de aqui para arriba tiro codigo el master Noé
-
+      
         ),
       ),
     );
@@ -136,7 +136,7 @@ class SliderList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: 10,
+        itemCount: 2,
         itemBuilder: (BuildContext contex, int index) => _Listitem());
   }
 }
