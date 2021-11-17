@@ -32,7 +32,7 @@ class HederVentas extends StatelessWidget {
             child: Container(
                 margin: const EdgeInsets.only(top: 5),
                 width: double.infinity,
-                height: 400,
+                height: 150,
                 decoration: BoxDecoration(
                     color: const Color(0xfffcbc5c),
                     borderRadius: BorderRadius.circular(20)),
@@ -95,20 +95,6 @@ Widget Cantidad() {
   });
 }
 
-class BotonAgregarVenta extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(30),
-      child: FloatingActionButton(
-        onPressed: () => {},
-        child: Icon(Icons.add),
-        backgroundColor: Colors.blue,
-      ),
-    );
-  }
-}
-
 Widget Guardar() {
   return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
     return FloatingActionButton(
@@ -137,16 +123,6 @@ Widget Guardar() {
             'estado': estado
           }).then((value) => print("Venta Agregada Exitosamente"));
         });
-  });
-}
-
-Widget Fotografia() {
-  return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
-    return FloatingActionButton(
-      onPressed: () => {},
-      child: Icon(Icons.add_a_photo),
-      backgroundColor: Colors.blue,
-    );
   });
 }
 

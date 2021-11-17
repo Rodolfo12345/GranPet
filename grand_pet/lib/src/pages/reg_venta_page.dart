@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:grand_pet/src/widgest/home_widgest.dart';
+import 'package:grand_pet/src/widgest/login_widgest.dart';
 import 'package:grand_pet/src/widgest/venta_widgets.dart';
 
 class VentasPage extends StatefulWidget {
@@ -14,96 +16,121 @@ String _muestra = 'Opciones';
 class _reg_venta_PageState extends State<VentasPage> {
   Widget build(BuildContext context) {
     return SafeArea(
-        top: true,
-        child: Scaffold(
-            body: Center(
-                child: Column(
-                    //mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+      top: true,
+      child: Scaffold(
+        body: Center(
+          child: Column(
+            children: [
               Flexible(
                 child: (HederVentas()),
               ),
-              Flexible(
-                  child: Row(
-                children: const [
-                  Text(
-                    "Productos: ",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Color(0xfffcbc5c),
-                      fontSize: 25,
-                    ),
-                  ),
-                  Spacer(),
+              Row(
+                children: const [Text("Productos: ",textAlign: TextAlign.center,style: TextStyle(color: Color(0xfffcbc5c),fontSize: 25,)),
+                Spacer(),
                 ],
-              )),
-              const SizedBox(
-                height: 30.0,
               ),
-              Premium(),
-              const SizedBox(
-                height: 30.0,
-              ),
-              Olistico(),
-              const SizedBox(
-                height: 30.0,
-              ),
-              SuperPremium(),
-              const SizedBox(height: 30.0,),
-              Guardar(),
-              const SizedBox(height: 30.0,),
-              Fotografia(),
 
-              Flexible(
+              Expanded(
                 child: ListView(
                 padding: const EdgeInsets.all(8),
                 children: <Widget>[
-
-
                   Container(
                     height: 50,
                     color: Colors.amber[600],
-                    child: const Center(child: Text('Entry A')),
+                    child: const Center(child: Text('Producto A')),
                   ),
                   Container(
                     height: 50,
                     color: Colors.amber[500],
-                    child: const Center(child: Text('Entry B')),
+                    child: const Center(child: Text('Producto B')),
                   ),
                   Container(
                     height: 50,
                     color: Colors.amber[100],
-                    child: const Center(child: Text('Entry C')),
+                    child: const Center(child: Text('Producto C')),
+                  ),
+                                  Container(
+                    height: 50,
+                    color: Colors.amber[600],
+                    child: const Center(child: Text('Producto A')),
+                  ),
+                  Container(
+                    height: 50,
+                    color: Colors.amber[500],
+                    child: const Center(child: Text('Producto B')),
                   ),
                   Container(
                     height: 50,
                     color: Colors.amber[100],
-                    child: const Center(child: Text('Entry D')),
+                    child: const Center(child: Text('Producto C')),
                   ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[100],
-                    child: const Center(child: Text('Entry E')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[100],
-                    child: const Center(child: Text('Entry F')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[100],
-                    child: const Center(child: Text('Entry G')),
-                  ),
-                  Premium()
-
+                  Lote(),
                 ],
                 ),
-              )
+              ),
+              PaddinHistorial(),
+              Row(children: const [
+                Fotografia(),
+                Spacer(),
+                Agregar(),
+                Spacer(),
+                Guardar()
+
+              ],
+              ),
             ]
           )
         )
       )
+    );
+  }
+}
+
+class Guardar extends StatelessWidget {
+  const Guardar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      heroTag: "guardar",
+      onPressed: () => {},
+      child: const Icon(Icons.save),
+      backgroundColor: Colors.blue,
+    );
+  }
+}
+
+class Agregar extends StatelessWidget {
+  const Agregar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      heroTag: "agregar",
+      onPressed: () => {},
+      child: const Icon(Icons.add),
+      backgroundColor: Colors.blue,
+    );
+  }
+}
+
+class Fotografia extends StatelessWidget {
+  const Fotografia({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      heroTag: "foto",
+      onPressed: () => {},
+      child: const Icon(Icons.add_a_photo),
+      backgroundColor: Colors.blue,
+      
     );
   }
 }
