@@ -74,7 +74,7 @@ Widget passwordTextField() {
             labelText: 'Contraseña',
           ),
           onChanged: (value){
-            print('hola');
+            
           },
         ),
       );
@@ -84,26 +84,28 @@ Widget passwordTextField() {
 
 Widget bottomLogin() {
   return StreamBuilder(
-    builder:(BuildContext context, AsyncSnapshot snapshot){
+
+    //Validacion
+    stream: administradores.where('Usuario', isEqualTo: 'Rodolfo').snapshots(),
+    builder:(BuildContext context,  AsyncSnapshot<QuerySnapshot> snapshot){
+
+      if(!snapshot.hasData) return const CircularProgressIndicator();
+
       return ElevatedButton(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-          child: const Text('Iniciar Secion'),
-          /*decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-            color: const Color(0xfffcbc5c),
-          ),*/
+          child: const Text('Iniciar Secion',style: TextStyle(fontSize: 16)),
         ),
 
         onPressed: () async{
 
-          //Cambio de pagina
-          Navigator.pushNamed(context, HomePage.id);
+          //Verificacion de usuario
           print('usuarion 2:$usuario');
-          /*if(password == '1234')
+
+          if(usuario == 'Rodolfo')
           {
-            Navigator.pushNamed(context, HomePage.id);
-          }*/
+            Navigator.pushNamed(context, HomePage.id);//Cambio de pagina
+          }
 
           //insertar datos
           /*await administradores.add({
@@ -160,11 +162,11 @@ Widget bottomLogin() {
             })
           });*/
 
-        StreamBuilder(
+        /*StreamBuilder(
           stream: administradores.where('Usuario', isEqualTo: 'Rodolfo').snapshots(),
           builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot)
           {
-            if(!snapshot.hasData) return CircularProgressIndicator();
+            if(!snapshot.hasData) return const CircularProgressIndicator();
             return ListView.builder(
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (BuildContext context, int index){
@@ -179,10 +181,7 @@ Widget bottomLogin() {
                   ),
                 );
               });
-          });
-
-
-
+          });*/
 
         });   
     }); 
@@ -200,7 +199,7 @@ Widget _ImageLogin() {
   );
 }
 
-Widget Prueba(){
+Widget InicioSesion(){
     return Scaffold(
       body: Center(
         child: (
@@ -214,12 +213,10 @@ Widget Prueba(){
               itemBuilder: (BuildContext context, int index){
                 //String id = snapshot.data!.docs[index].id;
                 usuario = snapshot.data!.docs[index].get('Usuario');
-                print(usuario);
                 return Card(
                   child: Column(
                     children: [
                       Text('Usuario: $usuario')
-                      
                     ],
                   ),
                 );
@@ -230,34 +227,3 @@ Widget Prueba(){
     );
   
 }
-
-/*
-class Nombre extends StatelessWidget {
-  //final String documentId;
-
-  //GetUserName(this.documentId);
-
-  @override
-  Widget build(BuildContext context) {
-
-    return FutureBuilder<DocumentSnapshot>(
-      future: ventas.doc("NacAUlEx2QPwS4JD55NN").get(),
-      builder:
-        (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-          if (snapshot.hasError) {
-            return const Text("A ocurrido un herror");
-          }
-
-          if (snapshot.hasData && !snapshot.data!.exists) {
-            return const Text("El documento no existe");
-          }
-
-          if (snapshot.connectionState == ConnectionState.done) {
-            Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
-            return Text("Usuario: ${data['Premium']}");
-          }
-          return const Text("Cargando");
-      },
-    );
-  }
-}*/

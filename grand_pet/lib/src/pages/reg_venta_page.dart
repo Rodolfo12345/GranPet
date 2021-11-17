@@ -50,6 +50,7 @@ class _reg_venta_PageState extends State<VentasPage> {
                 height: 30.0,
               ),
               SuperPremium(),
+<<<<<<< HEAD
               const SizedBox(
                 height: 30.0,
               ),
@@ -57,5 +58,60 @@ class _reg_venta_PageState extends State<VentasPage> {
                 children: [Fotografia(), BotonAgregarVenta(), Guardar()],
               )
             ]))));
+=======
+              const SizedBox(height: 30.0,),
+              Guardar(),
+              const SizedBox(height: 30.0,),
+              Fotografia(),
+
+              Flexible(
+                child: ListView(
+                padding: const EdgeInsets.all(8),
+                children: <Widget>[
+                  Container(
+                    height: 50,
+                    color: Colors.amber[600],
+                    child: const Center(child: Text('Entry A')),
+                  ),
+                  Container(
+                    height: 50,
+                    color: Colors.amber[500],
+                    child: const Center(child: Text('Entry B')),
+                  ),
+                  Container(
+                    height: 50,
+                    color: Colors.amber[100],
+                    child: const Center(child: Text('Entry C')),
+                  ),
+                  Container(
+                    height: 50,
+                    color: Colors.amber[100],
+                    child: const Center(child: Text('Entry D')),
+                  ),
+                  Container(
+                    height: 50,
+                    color: Colors.amber[100],
+                    child: const Center(child: Text('Entry E')),
+                  ),
+                  Container(
+                    height: 50,
+                    color: Colors.amber[100],
+                    child: const Center(child: Text('Entry F')),
+                  ),
+                  Container(
+                    height: 50,
+                    color: Colors.amber[100],
+                    child: const Center(child: Text('Entry G')),
+                  ),
+                ],
+            ),
+              )
+
+            ]
+          )
+        )
+      )
+    );
+>>>>>>> 903d3ed5dc78a8ac008e68d4a947e1edbaad400c
   }
 }
