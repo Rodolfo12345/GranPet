@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:grand_pet/src/pages/home.dart';
 
 CollectionReference ventas = FirebaseFirestore.instance.collection("Ventas");
+
 ///Obtencion de texto
 final premium = TextEditingController();
 final superPremium = TextEditingController();
@@ -12,7 +13,7 @@ final olistico = TextEditingController();
 //Variables globales
 var id = '1';
 var fecha = DateTime.now();
-var usuario = 'Rodolfo'; 
+var usuario = 'Rodolfo';
 var lote = '999999';
 var estado = true;
 
@@ -20,100 +21,100 @@ String prem = '';
 String sup = '';
 String oli = '';
 
-
 class HederVentas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      top: true,
-      child: Padding(/*Container*/
-        padding: const EdgeInsets.symmetric(horizontal: 5),
-        child: Container(
-          margin: const EdgeInsets.only(top: 5),
-          width: double.infinity,
-          height: 400,
-          decoration: BoxDecoration(
-            color: const Color(0xfffcbc5c),
-            borderRadius: BorderRadius.circular(20)
-          ),
-          child: ListView(
-            children: [
-              ListTile(
-                leading: const Icon(Icons.chevron_left_sharp, size: 40, color: Colors.white,),
-                title: const Text("Volver", style: TextStyle(color: Colors.white, fontSize: 25),),
-                onTap: (){
-                  Navigator.pushNamed(context, HomePage.id);
-                },
-              ),
-              const Text(
-                'Registrar Ventas',
-                textAlign: TextAlign.center, style: TextStyle(
-                  color: Colors.white, 
-                  fontSize: 40,
-
-                )
-              )
-            ]
-          )
-        )
-      )
-    );
+        top: true,
+        child: Padding(
+            /*Container*/
+            padding: const EdgeInsets.symmetric(horizontal: 5),
+            child: Container(
+                margin: const EdgeInsets.only(top: 5),
+                width: double.infinity,
+                height: 400,
+                decoration: BoxDecoration(
+                    color: const Color(0xfffcbc5c),
+                    borderRadius: BorderRadius.circular(20)),
+                child: ListView(children: [
+                  ListTile(
+                    leading: const Icon(
+                      Icons.chevron_left_sharp,
+                      size: 40,
+                      color: Colors.white,
+                    ),
+                    title: const Text(
+                      "Volver",
+                      style: TextStyle(color: Colors.white, fontSize: 25),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, HomePage.id);
+                    },
+                  ),
+                  const Text('Registrar Ventas',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 40,
+                      ))
+                ]))));
   }
 }
 
 Widget Lote() {
-  return StreamBuilder(
-    builder:(BuildContext context, AsyncSnapshot snapshot){
-      return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: TextField(
-          keyboardType: TextInputType.emailAddress,
-          cursorColor: const Color(0xfffcbc5c),
-          decoration: const InputDecoration(
-            icon: Icon(Icons.date_range_outlined),
-            labelText: 'Lote',
-          ),
-
-          onChanged: (value){
-            
-          },
+  return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: TextField(
+        keyboardType: TextInputType.emailAddress,
+        cursorColor: const Color(0xfffcbc5c),
+        decoration: const InputDecoration(
+          icon: Icon(Icons.date_range_outlined),
+          labelText: 'Lote',
         ),
-      );
-    }
-  ); 
+        onChanged: (value) {},
+      ),
+    );
+  });
 }
 
 Widget Cantidad() {
-  return StreamBuilder(
-    builder:(BuildContext context, AsyncSnapshot snapshot){
-      return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: TextField(
-          keyboardType: TextInputType.emailAddress,
-          cursorColor: const Color(0xfffcbc5c),
-          decoration: const InputDecoration(
-            icon: Icon(Icons.now_widgets_outlined),
-            labelText: 'Cantidad',
-          ),
-          onChanged: (value){
-            
-          },
+  return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: TextField(
+        keyboardType: TextInputType.emailAddress,
+        cursorColor: const Color(0xfffcbc5c),
+        decoration: const InputDecoration(
+          icon: Icon(Icons.now_widgets_outlined),
+          labelText: 'Cantidad',
         ),
-      );
-    }
-  ); 
+        onChanged: (value) {},
+      ),
+    );
+  });
+}
+
+class BotonAgregarVenta extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(30),
+      child: FloatingActionButton(
+        onPressed: () => {},
+        child: Icon(Icons.add),
+        backgroundColor: Colors.blue,
+      ),
+    );
+  }
 }
 
 Widget Guardar() {
-  return StreamBuilder(
-    builder:(BuildContext context, AsyncSnapshot snapshot){
-      return ElevatedButton(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-          child: const Text('Guardar'),
-        ),
-        onPressed: () async{
-
+  return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
+    return FloatingActionButton(
+        child: Icon(Icons.upload_file),
+        backgroundColor: Colors.blue,
+        onPressed: () async {
           prem = premium.text;
           sup = superPremium.text;
           oli = olistico.text;
@@ -129,102 +130,78 @@ Widget Guardar() {
             //'idUsuario': id,
             'Fecha': fecha,
             'Usuario': usuario,
-            'Lote':lote,
+            'Lote': lote,
             'Premium': prem,
             'Super premium': sup,
             'Holistico': oli,
             'estado': estado
           }).then((value) => print("Venta Agregada Exitosamente"));
-          
-        }
-      );
-    }
-  );
+        });
+  });
 }
 
 Widget Fotografia() {
-  return StreamBuilder(
-    builder:(BuildContext context, AsyncSnapshot snapshot){
-      return ElevatedButton(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-          child: const Text('Subir Fotografia'),
-        ),
-        onPressed: () async{
-          //Navigator.pushNamed(context, HomePage.id);
-        }
-      );
-    }
-  );
+  return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
+    return FloatingActionButton(
+      onPressed: () => {},
+      child: Icon(Icons.add_a_photo),
+      backgroundColor: Colors.blue,
+    );
+  });
 }
 
 Widget Premium() {
-  return StreamBuilder(
-    builder:(BuildContext context, AsyncSnapshot snapshot){
-      return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: TextField(
-          controller: premium,
-          keyboardType: TextInputType.number,
-          cursorColor: const Color(0xfffcbc5c),
-          decoration: const InputDecoration(
-            icon: Icon(Icons.date_range_outlined),
-            labelText: 'Premium',
-          ),
-
-          onChanged: (value){
-            
-          },
+  return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: TextField(
+        controller: premium,
+        keyboardType: TextInputType.number,
+        cursorColor: const Color(0xfffcbc5c),
+        decoration: const InputDecoration(
+          icon: Icon(Icons.date_range_outlined),
+          labelText: 'Premium',
         ),
-      );
-    }
-  ); 
+        onChanged: (value) {},
+      ),
+    );
+  });
 }
 
 Widget Olistico() {
-  return StreamBuilder(
-    builder:(BuildContext context, AsyncSnapshot snapshot){
-      return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: TextField(
-          controller: olistico,
-          keyboardType: TextInputType.number,
-          cursorColor: const Color(0xfffcbc5c),
-          decoration: const InputDecoration(
-            icon: Icon(Icons.date_range_outlined),
-            labelText: 'Olistico',
-          ),
-
-          onChanged: (value){
-            
-          },
+  return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: TextField(
+        controller: olistico,
+        keyboardType: TextInputType.number,
+        cursorColor: const Color(0xfffcbc5c),
+        decoration: const InputDecoration(
+          icon: Icon(Icons.date_range_outlined),
+          labelText: 'Olistico',
         ),
-      );
-    }
-  ); 
+        onChanged: (value) {},
+      ),
+    );
+  });
 }
 
 Widget SuperPremium() {
-  return StreamBuilder(
-    builder:(BuildContext context, AsyncSnapshot snapshot){
-      return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: TextField(
-          controller: superPremium,
-          keyboardType: TextInputType.number,
-          cursorColor: const Color(0xfffcbc5c),
-          decoration: const InputDecoration(
-            icon: Icon(Icons.date_range_outlined),
-            labelText: 'SuperPremium',
-          ),
-
-          onChanged: (value){
-            
-          }, 
+  return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: TextField(
+        controller: superPremium,
+        keyboardType: TextInputType.number,
+        cursorColor: const Color(0xfffcbc5c),
+        decoration: const InputDecoration(
+          icon: Icon(Icons.date_range_outlined),
+          labelText: 'SuperPremium',
         ),
-      );
-    }
-  ); 
+        onChanged: (value) {},
+      ),
+    );
+  });
 }
 
 
