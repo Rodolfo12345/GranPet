@@ -10,7 +10,7 @@ var password = '';
 
 //instanciamos la base de datos
 CollectionReference administradores = FirebaseFirestore.instance.collection("Administradores");
-CollectionReference ventas = FirebaseFirestore.instance.collection("Ventas");
+//CollectionReference ventas = FirebaseFirestore.instance.collection("Ventas");
 
 class FondoPrincipal extends StatelessWidget {
   @override
@@ -99,7 +99,7 @@ Widget bottomLogin() {
 
           //Cambio de pagina
           Navigator.pushNamed(context, HomePage.id);
-          
+          print('usuarion 2:$usuario');
           /*if(password == '1234')
           {
             Navigator.pushNamed(context, HomePage.id);
@@ -208,12 +208,12 @@ Widget Prueba(){
           stream: administradores.where('Usuario', isEqualTo: 'Rodolfo').snapshots(),
           builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot)
           {
-            if(!snapshot.hasData) return CircularProgressIndicator();
+            if(!snapshot.hasData) return const CircularProgressIndicator();
             return ListView.builder(
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (BuildContext context, int index){
                 //String id = snapshot.data!.docs[index].id;
-                String usuario = snapshot.data!.docs[index].get('Usuario');
+                usuario = snapshot.data!.docs[index].get('Usuario');
                 print(usuario);
                 return Card(
                   child: Column(
@@ -231,7 +231,7 @@ Widget Prueba(){
   
 }
 
-
+/*
 class Nombre extends StatelessWidget {
   //final String documentId;
 
@@ -260,4 +260,4 @@ class Nombre extends StatelessWidget {
       },
     );
   }
-}
+}*/
