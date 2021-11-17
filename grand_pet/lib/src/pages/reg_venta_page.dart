@@ -16,73 +16,73 @@ String _muestra = 'Opciones';
 class _reg_venta_PageState extends State<VentasPage> {
   Widget build(BuildContext context) {
     return SafeArea(
-      top: true,
-      child: Scaffold(
-        body: Center(
-          child: Column(
-            children: [
-              Flexible(
-                child: (HederVentas()),
-              ),
-              Row(
-                children: const [Text("Productos: ",textAlign: TextAlign.center,style: TextStyle(color: Color(0xfffcbc5c),fontSize: 25,)),
-                Spacer(),
-                ],
-              ),
-
-              Expanded(
-                child: ListView(
-                padding: const EdgeInsets.all(8),
-                children: <Widget>[
-                  Container(
-                    height: 50,
-                    color: Colors.amber[600],
-                    child: const Center(child: Text('Producto A')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[500],
-                    child: const Center(child: Text('Producto B')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[100],
-                    child: const Center(child: Text('Producto C')),
-                  ),
-                                  Container(
-                    height: 50,
-                    color: Colors.amber[600],
-                    child: const Center(child: Text('Producto A')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[500],
-                    child: const Center(child: Text('Producto B')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[100],
-                    child: const Center(child: Text('Producto C')),
-                  ),
-                  Lote(),
-                ],
+        top: true,
+        child: Scaffold(
+            body: Center(
+                child: Column(children: [
+          Flexible(
+            child: (HederVentas()),
+          ),
+          Row(
+            children: const [
+              Text("Productos: ",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color(0xfffcbc5c),
+                    fontSize: 25,
+                  )),
+              Spacer(),
+            ],
+          ),
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.all(8),
+              children: <Widget>[
+                Container(
+                  height: 50,
+                  color: Colors.amber[600],
+                  child: const Center(child: Text('Producto A')),
                 ),
-              ),
-              PaddinHistorial(),
-              Row(children: const [
-                Fotografia(),
-                Spacer(),
-                Agregar(),
-                Spacer(),
-                Guardar()
-
+                Container(
+                  height: 50,
+                  color: Colors.amber[500],
+                  child: const Center(child: Text('Producto B')),
+                ),
+                Container(
+                  height: 50,
+                  color: Colors.amber[100],
+                  child: const Center(child: Text('Producto C')),
+                ),
+                Container(
+                  height: 50,
+                  color: Colors.amber[600],
+                  child: const Center(child: Text('Producto A')),
+                ),
+                Container(
+                  height: 50,
+                  color: Colors.amber[500],
+                  child: const Center(child: Text('Producto B')),
+                ),
+                Container(
+                  height: 50,
+                  color: Colors.amber[100],
+                  child: const Center(child: Text('Producto C')),
+                ),
+                Lote(),
               ],
-              ),
-            ]
-          )
-        )
-      )
-    );
+            ),
+          ),
+          PaddinHistorial(),
+          Row(
+            children: const [
+              Fotografia(),
+              Spacer(),
+              Agregar(),
+              Spacer(),
+              Guardar()
+            ],
+          ),
+        ]))));
   }
 }
 
@@ -111,7 +111,7 @@ class Agregar extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       heroTag: "agregar",
-      onPressed: () => {},
+      onPressed: () => {VentanaEmergente(context)},
       child: const Icon(Icons.add),
       backgroundColor: Colors.blue,
     );
@@ -130,7 +130,6 @@ class Fotografia extends StatelessWidget {
       onPressed: () => {},
       child: const Icon(Icons.add_a_photo),
       backgroundColor: Colors.blue,
-      
     );
   }
 }

@@ -320,10 +320,41 @@ class StatusBar extends StatelessWidget {
   }
 }
 
-//CODIGO DE NOÉ 
-//ESTE CODIGO ES PARA LA VENTANA EMERGENTE  
+//CODIGO DE NOÉ
+//ESTE CODIGO ES PARA LA VENTANA EMERGENTE
+/*class VentanaEmergente extends StatelessWidget {
+  Widget build(BuildContext context) {
+    
+  }
+}*/
 
+VentanaEmergente(BuildContext context) {
+  TextEditingController controladorPersonalizado = TextEditingController();
+  return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Escribe la cantidad'),
+          content: TextField(
+            controller: controladorPersonalizado,
+          ),
+          actions: [
+            MaterialButton(
+                elevation: 8.5, child: Text("Cancelar"), onPressed: () => {}),
+            MaterialButton(
+              elevation: 5.0,
+              child: Text("Continuar"),
+              onPressed: () => {
+                Navigator.of(context)
+                    .pop(controladorPersonalizado.text.toString()),
+                print('$controladorPersonalizado')
+              },
+            )
+          ],
+        );
+      });
+}
 
-//TERMINA CODIGO DE NOE 
+//TERMINA CODIGO DE NOE
 
 //Status Comisiones
