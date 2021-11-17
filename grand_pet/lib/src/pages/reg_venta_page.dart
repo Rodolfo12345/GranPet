@@ -53,11 +53,9 @@ class _reg_venta_PageState extends State<VentasPage> {
               const SizedBox(
                 height: 30.0,
               ),
-              Guardar(),
-              const SizedBox(
-                height: 30.0,
-              ),
-              Fotografia()
+              Row(
+                children: [Fotografia(), BotonAgregarVenta(), Guardar()],
+              )
             ]))));
   }
 }
