@@ -3,7 +3,8 @@ import 'dart:ui';
 import 'package:grand_pet/src/pages/perfil_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-CollectionReference administradores = FirebaseFirestore.instance.collection("Administradores");
+CollectionReference administradores =
+    FirebaseFirestore.instance.collection("Administradores");
 CollectionReference ventas = FirebaseFirestore.instance.collection("Ventas");
 
 class Barra_lateral extends StatelessWidget {
@@ -13,8 +14,7 @@ class Barra_lateral extends StatelessWidget {
       child: Container(
         color: const Color(0xfffcbc5c),
         child: Column(
-          children:[
-            
+          children: [
             /*Container(
               padding: const EdgeInsets.all(20),
               width: double.infinity,
@@ -27,72 +27,108 @@ class Barra_lateral extends StatelessWidget {
               ),
             ),*/
             const DrawerHeader(
-              child:CircleAvatar(
-                radius: 100.0,
-                backgroundColor: Colors.brown,
-                backgroundImage: AssetImage("assets/Login.png"),
-              ) 
-            ),
-            
+                child: CircleAvatar(
+              radius: 100.0,
+              backgroundColor: Colors.brown,
+              backgroundImage: AssetImage("assets/Login.png"),
+            )),
             Flexible(
               child: ListView(
                 children: [
-                  ListTile (
-                    leading: const Icon(Icons.people, color: Colors.white, size: 40,),
-                    title: const Text('Perfil', style: TextStyle (color: Colors.white, fontSize: 30)),
-                    onTap: (){
+                  ListTile(
+                    leading: const Icon(
+                      Icons.people,
+                      color: Colors.white,
+                      size: 40,
+                    ),
+                    title: const Text('Perfil',
+                        style: TextStyle(color: Colors.white, fontSize: 30)),
+                    onTap: () {
                       Navigator.pushNamed(context, PerfilPage.id);
                     },
                   ),
-                  ListTile (
-                    leading: const Icon(Icons.arrow_circle_up ,color: Colors.white, size: 40,),
-                    title: const Text('Nivel', style: TextStyle (color: Colors.white, fontSize: 30)),
-                    onTap: (){
+                  ListTile(
+                    leading: const Icon(
+                      Icons.arrow_circle_up,
+                      color: Colors.white,
+                      size: 40,
+                    ),
+                    title: const Text('Nivel',
+                        style: TextStyle(color: Colors.white, fontSize: 30)),
+                    onTap: () {
                       Navigator.pushNamed(context, PerfilPage.id);
                     },
                   ),
-                  ListTile (
-                    leading: const Icon(Icons.monetization_on, color: Colors.white, size: 40,),
-                    title: const Text('Comisiones', style: TextStyle (color: Colors.white, fontSize: 30)),
-                    onTap: (){
+                  ListTile(
+                    leading: const Icon(
+                      Icons.monetization_on,
+                      color: Colors.white,
+                      size: 40,
+                    ),
+                    title: const Text('Comisiones',
+                        style: TextStyle(color: Colors.white, fontSize: 30)),
+                    onTap: () {
                       Navigator.pushNamed(context, PerfilPage.id);
                     },
                   ),
-                  ListTile (
-                    leading: const Icon(Icons.history, color: Colors.white, size: 40,),
-                    title: const Text('Historial', style: TextStyle (color: Colors.white, fontSize: 30)),
-                    onTap: (){
+                  ListTile(
+                    leading: const Icon(
+                      Icons.history,
+                      color: Colors.white,
+                      size: 40,
+                    ),
+                    title: const Text('Historial',
+                        style: TextStyle(color: Colors.white, fontSize: 30)),
+                    onTap: () {
                       Navigator.pushNamed(context, PerfilPage.id);
                     },
                   ),
-                  ListTile (
-                    leading: const Icon(Icons.calculate, color: Colors.white, size: 40,),
-                    title: const Text('Calculadora', style: TextStyle (color: Colors.white, fontSize: 30)),
-                    onTap: (){
+                  ListTile(
+                    leading: const Icon(
+                      Icons.calculate,
+                      color: Colors.white,
+                      size: 40,
+                    ),
+                    title: const Text('Calculadora',
+                        style: TextStyle(color: Colors.white, fontSize: 30)),
+                    onTap: () {
                       Navigator.pushNamed(context, PerfilPage.id);
                     },
                   ),
                 ],
               ),
             ),
-
             const ListTile(
-              leading: Icon(Icons.lightbulb_outline, color: Colors.white, size: 35,),
-              title: Text('Tema', style: TextStyle(color: Colors.white, fontSize: 25),),
-              
+              leading: Icon(
+                Icons.lightbulb_outline,
+                color: Colors.white,
+                size: 35,
+              ),
+              title: Text(
+                'Tema',
+                style: TextStyle(color: Colors.white, fontSize: 25),
+              ),
             ),
             const ListTile(
-              leading: Icon(Icons.settings, color: Colors.white, size: 35,),
-              title: Text('Configuracion', style: TextStyle(color: Colors.white, fontSize: 25),),
-              
+              leading: Icon(
+                Icons.settings,
+                color: Colors.white,
+                size: 35,
+              ),
+              title: Text(
+                'Configuracion',
+                style: TextStyle(color: Colors.white, fontSize: 25),
+              ),
             ),
             const ListTile(
-              title: Text('Cerra Sesion', textAlign: TextAlign.center, style: TextStyle(
-                color: Colors.white, 
-                fontSize: 30,
-                decoration: 
-                  TextDecoration.underline, 
-                  decorationThickness: 2.5,//grosor del subrayado
+              title: Text(
+                'Cerra Sesion',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  decoration: TextDecoration.underline,
+                  decorationThickness: 2.5, //grosor del subrayado
                   height: 2,
                 ),
               ),
@@ -103,25 +139,24 @@ class Barra_lateral extends StatelessWidget {
     );
   }
 }
+
 ///<Historial de Ventas>///
 class PaddinHistorial extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Padding(/*Container*/
+      child: Padding(
+        /*Container*/
         padding: const EdgeInsets.symmetric(horizontal: 3),
         child: Container(
           width: double.infinity,
           height: 400,
           decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10)
-          ),
+              color: Colors.white, borderRadius: BorderRadius.circular(10)),
 
           //de aqui en adelante tiro codigo el master Noé
           child: const SliderList(),
           //de aqui para arriba tiro codigo el master Noé
-      
         ),
       ),
     );
@@ -136,13 +171,56 @@ class SliderList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+<<<<<<< HEAD
         itemCount: 10,
+=======
+        itemCount: 3,
+>>>>>>> 99f58821b890bbdbc392b52fc8e484043aff9eb1
         itemBuilder: (BuildContext contex, int index) => _Listitem());
   }
 }
 
 //en esta parte es donde creo la lista de objetos que iran dentro del slider list.
 //Tambien en esta misma parte en donde creo los containers o cajas donde se mostrara el texto
+
+class _Producto extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: const Text('Premium',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.w500)));
+  }
+}
+
+class _Fecha extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: const Text(
+      '15/oct/2021',
+      style: TextStyle(
+          color: Colors.white,
+          fontSize: 20,
+          fontStyle: FontStyle.italic,
+          fontWeight: FontWeight.w500),
+    ));
+  }
+}
+
+class _Cantidad extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: const Text(
+      'Cantidad: 16 sacos',
+      style: TextStyle(
+          color: Colors.white, fontSize: 18, fontWeight: FontWeight.w400),
+    ));
+  }
+}
 
 class _Listitem extends StatelessWidget {
   @override
@@ -161,14 +239,18 @@ class _Listitem extends StatelessWidget {
       //y permitira que se pequien unos al lado de los otros
       child: Row(
         children: [
-          const Expanded (
-            flex: 2,
-              child: Icon(Icons.monetization_on, color: Colors.white, size: 50,)
-          ),
+          const Expanded(
+              flex: 2,
+              child: Icon(
+                Icons.monetization_on,
+                color: Colors.white,
+                size: 50,
+              )),
           Expanded(
-            flex: 4,
+              flex: 4,
               //ahora aqui usaremos las columnas, esto nos ayudara a que dentro de
               //cada Row se puedan encimar container uno por encima del otro
+<<<<<<< HEAD
               child: Column(
                 children: [
                   Expanded(
@@ -181,27 +263,31 @@ class _Listitem extends StatelessWidget {
                     child: Container(
                       alignment: Alignment.center,
                         child: const Text('Premium', style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.w500))//
+=======
+              child: Column(children: [
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.topLeft,
+                    child: const Text(
+                      'Producto',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold),
+>>>>>>> 99f58821b890bbdbc392b52fc8e484043aff9eb1
                     ),
-                  )
-                ]
-              )
-          ),
+                  ),
+                ),
+                Expanded(child: _Producto())
+              ])),
           Expanded(
-            flex: 4,
+              flex: 4,
               child: Column(
                 children: [
                   Expanded(
-                    child: Container(
-                      alignment: Alignment.topRight,
-                        child: const Text('15/oct/2021', style: TextStyle(color: Colors.white, fontSize: 20, fontStyle: FontStyle.italic, fontWeight: FontWeight.w500),)
-                    ),
+                    child: _Fecha(),
                   ),
-                  Expanded(
-                    child: Container(
-                      alignment: Alignment.centerRight,
-                        child: const Text('Cantidad: 16 sacos', style: TextStyle(color: Colors.white, fontSize: 18,fontWeight: FontWeight.w400),)
-                    ),
-                  )
+                  Expanded(child: _Cantidad())
                 ],
               ))
         ],
@@ -219,23 +305,27 @@ class StatusBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.transparent,///transparent
-      bottomOpacity: 0.0,
-      elevation: 0.0,
-      centerTitle: true,
-      iconTheme: const IconThemeData(color: Color(0xfffcbc5c), size: 40),
-      title: const Text("GrandPet", textAlign: TextAlign.center, style: TextStyle (color: Color(0xff7b333f), fontSize: 40)),
-      //title: Image.asset('assets/Logo.png', alignment: FractionalOffset.topCenter, height: 50,), 
+        backgroundColor: Colors.transparent,
 
-    actions:[
-      IconButton(
-        icon: const Icon(Icons.help,size: 40,),
-        onPressed: () {},
-      ),
+        ///transparent
+        bottomOpacity: 0.0,
+        elevation: 0.0,
+        centerTitle: true,
+        iconTheme: const IconThemeData(color: Color(0xfffcbc5c), size: 40),
+        title: const Text("GrandPet",
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Color(0xff7b333f), fontSize: 40)),
+        //title: Image.asset('assets/Logo.png', alignment: FractionalOffset.topCenter, height: 50,),
 
-    ]
-
-    );
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.help,
+              size: 40,
+            ),
+            onPressed: () {},
+          ),
+        ]);
   }
 }
 
