@@ -19,7 +19,7 @@ class _reg_venta_PageState extends State<VentasPage> {
       child: Scaffold(
         body: Center(
           child: Column(
-            //mainAxisAlignment: MainAxisAlignment.center,
+
             children:[
               Flexible(
                 child: (
@@ -55,7 +55,7 @@ class _reg_venta_PageState extends State<VentasPage> {
                   ],
                 )
               ),
-              const SizedBox(height: 30.0,)
+              /*const SizedBox(height: 30.0,)
 ,             Premium(),
               const SizedBox(height: 30.0,),
               Olistico(),
@@ -64,12 +64,14 @@ class _reg_venta_PageState extends State<VentasPage> {
               const SizedBox(height: 30.0,),
               Guardar(),
               const SizedBox(height: 30.0,),
-              Fotografia(),
+              Fotografia(),*/
 
               Flexible(
                 child: ListView(
                 padding: const EdgeInsets.all(8),
                 children: <Widget>[
+
+
                   Container(
                     height: 50,
                     color: Colors.amber[600],
@@ -105,10 +107,11 @@ class _reg_venta_PageState extends State<VentasPage> {
                     color: Colors.amber[100],
                     child: const Center(child: Text('Entry G')),
                   ),
-                ],
-            ),
-              )
+                  Premium()
 
+                ],
+                ),
+              )
             ]
           )
         )

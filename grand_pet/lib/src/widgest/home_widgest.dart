@@ -3,8 +3,7 @@ import 'dart:ui';
 import 'package:grand_pet/src/pages/perfil_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-CollectionReference administradores =
-    FirebaseFirestore.instance.collection("Administradores");
+CollectionReference administradores = FirebaseFirestore.instance.collection("Administradores");
 CollectionReference ventas = FirebaseFirestore.instance.collection("Ventas");
 
 class Barra_lateral extends StatelessWidget {
@@ -171,11 +170,7 @@ class SliderList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-<<<<<<< HEAD
         itemCount: 10,
-=======
-        itemCount: 3,
->>>>>>> 99f58821b890bbdbc392b52fc8e484043aff9eb1
         itemBuilder: (BuildContext contex, int index) => _Listitem());
   }
 }
@@ -250,7 +245,6 @@ class _Listitem extends StatelessWidget {
               flex: 4,
               //ahora aqui usaremos las columnas, esto nos ayudara a que dentro de
               //cada Row se puedan encimar container uno por encima del otro
-<<<<<<< HEAD
               child: Column(
                 children: [
                   Expanded(
@@ -263,21 +257,8 @@ class _Listitem extends StatelessWidget {
                     child: Container(
                       alignment: Alignment.center,
                         child: const Text('Premium', style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.w500))//
-=======
-              child: Column(children: [
-                Expanded(
-                  child: Container(
-                    alignment: Alignment.topLeft,
-                    child: const Text(
-                      'Producto',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold),
->>>>>>> 99f58821b890bbdbc392b52fc8e484043aff9eb1
                     ),
                   ),
-                ),
                 Expanded(child: _Producto())
               ])),
           Expanded(
