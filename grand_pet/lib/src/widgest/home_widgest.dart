@@ -136,7 +136,7 @@ class SliderList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: 2,
+        itemCount: 10,
         itemBuilder: (BuildContext contex, int index) => _Listitem());
   }
 }
@@ -174,7 +174,7 @@ class _Listitem extends StatelessWidget {
                   Expanded(
                       child: Container(
                         alignment: Alignment.topLeft,
-                        child: const Text('Producto', style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),),
+                        child: const Text('Productos', style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),),
                       ),
                   ),
                   Expanded(

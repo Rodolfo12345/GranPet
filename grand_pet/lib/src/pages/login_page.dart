@@ -55,13 +55,7 @@ class _LoginPageState extends State<LoginPage>{
               passwordTextField(),
               const SizedBox(height: 25.0,),
               bottomLogin(),
-
-              Flexible(
-                child: (
-                  Prueba()
-                ),
-              )
-
+              Flexible(child:InicioSesion())
             ],
             
           ),

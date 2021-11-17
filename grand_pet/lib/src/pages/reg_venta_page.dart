@@ -41,8 +41,8 @@ class _reg_venta_PageState extends State<VentasPage> {
                       child: DropdownButton(
                         items: _lista.map((String a){
                           return DropdownMenuItem(
-                              value: a,
-                              child: Text(a));
+                            value: a,
+                            child: Text(a));
                         }).toList(),
                         onChanged: (String? contenido)=>{
                           setState((){
@@ -55,14 +55,6 @@ class _reg_venta_PageState extends State<VentasPage> {
                   ],
                 )
               ),
-              /*const SizedBox(height: 30.0,),
-              Lote(),
-              const SizedBox(height: 25.0,),
-              Cantidad(),
-              const SizedBox(height: 25.0,),
-              Guardar(),
-              const SizedBox(height: 25.0,),
-              Fotografia()*/
               const SizedBox(height: 30.0,)
 ,             Premium(),
               const SizedBox(height: 30.0,),
@@ -72,7 +64,51 @@ class _reg_venta_PageState extends State<VentasPage> {
               const SizedBox(height: 30.0,),
               Guardar(),
               const SizedBox(height: 30.0,),
-              Fotografia()
+              Fotografia(),
+
+              Flexible(
+                child: ListView(
+                padding: const EdgeInsets.all(8),
+                children: <Widget>[
+                  Container(
+                    height: 50,
+                    color: Colors.amber[600],
+                    child: const Center(child: Text('Entry A')),
+                  ),
+                  Container(
+                    height: 50,
+                    color: Colors.amber[500],
+                    child: const Center(child: Text('Entry B')),
+                  ),
+                  Container(
+                    height: 50,
+                    color: Colors.amber[100],
+                    child: const Center(child: Text('Entry C')),
+                  ),
+                  Container(
+                    height: 50,
+                    color: Colors.amber[100],
+                    child: const Center(child: Text('Entry D')),
+                  ),
+                  Container(
+                    height: 50,
+                    color: Colors.amber[100],
+                    child: const Center(child: Text('Entry E')),
+                  ),
+                  Container(
+                    height: 50,
+                    color: Colors.amber[100],
+                    child: const Center(child: Text('Entry F')),
+                  ),
+                  Container(
+                    height: 50,
+                    color: Colors.amber[100],
+                    child: const Center(child: Text('Entry G')),
+                  ),
+                ],
+            ),
+              )
+
             ]
           )
         )
