@@ -3,7 +3,8 @@ import 'dart:ui';
 import 'package:grand_pet/src/pages/perfil_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-CollectionReference administradores = FirebaseFirestore.instance.collection("Administradores");
+CollectionReference administradores =
+    FirebaseFirestore.instance.collection("Administradores");
 CollectionReference ventas = FirebaseFirestore.instance.collection("Ventas");
 
 class Barra_lateral extends StatelessWidget {
@@ -245,20 +246,29 @@ class _Listitem extends StatelessWidget {
               flex: 4,
               //ahora aqui usaremos las columnas, esto nos ayudara a que dentro de
               //cada Row se puedan encimar container uno por encima del otro
-              child: Column(
-                children: [
-                  Expanded(
-                      child: Container(
-                        alignment: Alignment.topLeft,
-                        child: const Text('Productos', style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),),
-                      ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      alignment: Alignment.center,
-                        child: const Text('Premium', style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.w500))//
+              child: Column(children: [
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.topLeft,
+                    child: const Text(
+                      'Productos',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
+                ),
+                Expanded(
+                  child: Container(
+                      alignment: Alignment.center,
+                      child: const Text('Premium',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500)) //
+                      ),
+                ),
                 Expanded(child: _Producto())
               ])),
           Expanded(
@@ -309,5 +319,42 @@ class StatusBar extends StatelessWidget {
         ]);
   }
 }
+
+//CODIGO DE NOÉ
+//ESTE CODIGO ES PARA LA VENTANA EMERGENTE
+/*class VentanaEmergente extends StatelessWidget {
+  Widget build(BuildContext context) {
+    
+  }
+}*/
+
+VentanaEmergente(BuildContext context) {
+  TextEditingController controladorPersonalizado = TextEditingController();
+  return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Escribe la cantidad'),
+          content: TextField(
+            controller: controladorPersonalizado,
+          ),
+          actions: [
+            MaterialButton(
+                elevation: 8.5, child: Text("Cancelar"), onPressed: () => {}),
+            MaterialButton(
+              elevation: 5.0,
+              child: Text("Continuar"),
+              onPressed: () => {
+                Navigator.of(context)
+                    .pop(controladorPersonalizado.text.toString()),
+                print('$controladorPersonalizado')
+              },
+            )
+          ],
+        );
+      });
+}
+
+//TERMINA CODIGO DE NOE
 
 //Status Comisiones
