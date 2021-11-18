@@ -180,6 +180,106 @@ Widget SuperPremium() {
   });
 }
 
+// ESTE CODIGO ES EL QUE GENERA LOS BOTONES Y CREA LAS VENTANAS EMERGENTES
+class BotonGuardar extends StatelessWidget {
+  const BotonGuardar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      heroTag: "guardar",
+      onPressed: () => {},
+      child: const Icon(Icons.save),
+      backgroundColor: Colors.blue,
+    );
+  }
+}
+
+class Agregar extends StatelessWidget {
+  const Agregar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      heroTag: "agregar",
+      onPressed: () => {VentanaEmergente2(context)},
+      child: const Icon(Icons.add),
+      backgroundColor: Colors.blue,
+    );
+  }
+}
+
+class Fotografia extends StatelessWidget {
+  const Fotografia({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      heroTag: "foto",
+      onPressed: () => {},
+      child: const Icon(Icons.add_a_photo),
+      backgroundColor: Colors.blue,
+    );
+  }
+}
+
+VentanaEmergente(BuildContext context) {
+  TextEditingController controladorPersonalizado = TextEditingController();
+  return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Escribe la cantidad'),
+          content: TextField(
+            controller: controladorPersonalizado,
+            keyboardType: TextInputType.number,
+          ),
+          actions: [
+            MaterialButton(
+                elevation: 8.5,
+                child: const Text("Cancelar"),
+                onPressed: () => {}),
+            MaterialButton(
+              elevation: 5.0,
+              child: const Text("Continuar"),
+              onPressed: () => {
+                Navigator.of(context)
+                    .pop(controladorPersonalizado.text.toString()),
+                print('esto es lo que escribes: $controladorPersonalizado'),
+              },
+            )
+          ],
+        );
+      });
+}
+
+VentanaEmergente2(BuildContext context) {
+  return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('¿Que producto deseas registrar?'),
+          actions: [
+            TextButton(
+                onPressed: () => {VentanaEmergente(context)},
+                child: const Text('Premium')),
+            TextButton(
+                onPressed: () => {VentanaEmergente(context)},
+                child: const Text('Super premium')),
+            TextButton(
+                onPressed: () => {VentanaEmergente(context)},
+                child: const Text('Holistico'))
+          ],
+        );
+      });
+}
+//AQUI TERMINA EL CODIGO QUE GENERA LOS BOTONES Y CREA LAS VENTANAS EMERGENTES
 
 
 //Registra ventas
