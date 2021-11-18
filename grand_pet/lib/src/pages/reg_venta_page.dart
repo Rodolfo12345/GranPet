@@ -14,48 +14,48 @@ String _muestra = 'Opciones';
 class _reg_venta_PageState extends State<VentasPage> {
   Widget build(BuildContext context) {
     return SafeArea(
-      top: true,
-      child: Scaffold(
-        body: Center(
-          child: Column(
-            children: [
-              Expanded(
-                child: (HederVentas()),
-              ),
-              Row(
-                children: const [Text("Productos: ",textAlign: TextAlign.center,style: TextStyle(color: Color(0xfffcbc5c),fontSize: 25,)),
-                Spacer(),
-                ],
-              ),
-
-              Flexible(
-                flex: 2,
-                child: ListView(
-                padding: const EdgeInsets.all(8),
-                children: <Widget>[
-                  Container(
-                    height: 50,
-                    color: Colors.amber[600],
-                    child: const Center(child: Text('Producto A')),
-                  ),
-                  Lote(),
-                ],
+        top: true,
+        child: Scaffold(
+            body: Center(
+                child: Column(children: [
+          Expanded(
+            child: (HederVentas()),
+          ),
+          Row(
+            children: const [
+              Text("Productos: ",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color(0xfffcbc5c),
+                    fontSize: 25,
+                  )),
+              Spacer(),
+            ],
+          ),
+          Flexible(
+            flex: 2,
+            child: ListView(
+              padding: const EdgeInsets.all(8),
+              children: <Widget>[
+                Container(
+                  height: 50,
+                  color: Colors.amber[600],
+                  child: const Center(child: Text('Producto A')),
                 ),
-              ),
-              Row(children: const [
-                Fotografia(),
-                Spacer(),
-                Agregar(),
-                Spacer(),
-                Guardar()
-
+                Lote(),
               ],
-              ),
-            ]
-          )
-        )
-      )
-    );
+            ),
+          ),
+          Row(
+            children: const [
+              Fotografia(),
+              Spacer(),
+              Agregar(),
+              Spacer(),
+              Guardar()
+            ],
+          ),
+        ]))));
   }
 }
 
@@ -68,9 +68,7 @@ class Guardar extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       heroTag: "guardar",
-      onPressed: () => {
-
-      },
+      onPressed: () => {},
       child: const Icon(Icons.save),
       backgroundColor: Colors.blue,
     );
@@ -86,10 +84,7 @@ class Agregar extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       heroTag: "agregar",
-      onPressed: () => {
-        VentanaEmergente(context)
-        
-      },
+      onPressed: () => {VentanaEmergente2(context)},
       child: const Icon(Icons.add),
       backgroundColor: Colors.blue,
     );
@@ -108,11 +103,9 @@ class Fotografia extends StatelessWidget {
       onPressed: () => {},
       child: const Icon(Icons.add_a_photo),
       backgroundColor: Colors.blue,
-      
     );
   }
 }
-
 
 VentanaEmergente(BuildContext context) {
   TextEditingController controladorPersonalizado = TextEditingController();
@@ -126,34 +119,17 @@ VentanaEmergente(BuildContext context) {
             keyboardType: TextInputType.number,
           ),
           actions: [
-
-            TextButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => const AlertDialog(
-                    title: Text('Cantidad de productos', style: TextStyle(color: Colors.redAccent, ),textAlign: TextAlign.center,),
-                    content: TextField(
-                      
-                      ),
-                    actions: [
-                      
-                    ],
-                  )
-                );
-              },
-              child:const Text('Premium'),
-            ),
-            
             MaterialButton(
-                elevation: 8.5, child: const Text("Cancelar"), onPressed: () => {}),
+                elevation: 8.5,
+                child: const Text("Cancelar"),
+                onPressed: () => {}),
             MaterialButton(
               elevation: 5.0,
               child: const Text("Continuar"),
               onPressed: () => {
                 Navigator.of(context)
                     .pop(controladorPersonalizado.text.toString()),
-                print('esto es lo que escribes: $controladorPersonalizado')
+                print('esto es lo que escribes: $controladorPersonalizado'),
               },
             )
           ],
@@ -161,9 +137,28 @@ VentanaEmergente(BuildContext context) {
       });
 }
 
+VentanaEmergente2(BuildContext context) {
+  return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('¿Que producto deseas registrar?'),
+          actions: [
+            TextButton(
+                onPressed: () => {VentanaEmergente(context)},
+                child: const Text('Premium')),
+            TextButton(
+                onPressed: () => {VentanaEmergente(context)},
+                child: const Text('Super premium')),
+            TextButton(
+                onPressed: () => {VentanaEmergente(context)},
+                child: const Text('Holistico'))
+          ],
+        );
+      });
+}
 
-
-/////////////////
+////////////////
 Ventana(BuildContext context) {
   Widget build(BuildContext context) {
     final AlertDialog dialog = AlertDialog(
@@ -174,12 +169,8 @@ Ventana(BuildContext context) {
         children: [
           for (int i = 1; i <= 3; i++)
             ListTile(
-              title: Text(
-                'option $i',
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle1
-              ),
+              title: Text('option $i',
+                  style: Theme.of(context).textTheme.subtitle1),
               leading: Radio(
                 value: i,
                 groupValue: 1,
