@@ -145,8 +145,8 @@ class _HomePageState extends State<HomePage> {
                         var id = snapshot.data!.docs[index].id;
                         var usuario = snapshot.data!.docs[index].get('Usuario');
                         var Lote = snapshot.data!.docs[index].get('Lote');
-                        var Holistico = snapshot.data!.docs[index].get('Holistico');
-                        var Premium = snapshot.data!.docs[index].get('Premium');
+                        //var Holistico = snapshot.data!.docs[index].get('Holistico');
+                        //var Premium = snapshot.data!.docs[index].get('Premium');
                         //var Super = snapshot.data!.docs[index].get('Super Premium');
                         //var correo = snapshot.data!.docs[index].get('correo');
                         return Card(
@@ -159,7 +159,7 @@ class _HomePageState extends State<HomePage> {
                                   fontSize: 25,
                                 ),
                               ),
-                              
+
                               Text('Lote: $Lote',
                                 textAlign: TextAlign.center, 
                                 style: const TextStyle(
@@ -168,7 +168,7 @@ class _HomePageState extends State<HomePage> {
                                 )
                               ),
 
-                              Text('Holistico: $Holistico',
+                              /*Text('Holistico: $Holistico',
                                 textAlign: TextAlign.center, 
                                 style: const TextStyle(
                                   color: Color(0xff7b333f),
@@ -191,7 +191,7 @@ class _HomePageState extends State<HomePage> {
                                   color: Color(0xff7b333f),
                                   fontSize: 25
                                 )
-                              )
+                              )*/
                             ],
                           ),
                         );
