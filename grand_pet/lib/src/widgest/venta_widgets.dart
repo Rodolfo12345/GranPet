@@ -78,27 +78,10 @@ Widget Lote() {
   });
 }
 
-Widget Cantidad() {
-  return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: TextField(
-        keyboardType: TextInputType.emailAddress,
-        cursorColor: const Color(0xfffcbc5c),
-        decoration: const InputDecoration(
-          icon: Icon(Icons.now_widgets_outlined),
-          labelText: 'Cantidad',
-        ),
-        onChanged: (value) {},
-      ),
-    );
-  });
-}
-
 Widget Guardar() {
   return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
     return FloatingActionButton(
-        child: Icon(Icons.upload_file),
+        child: const Icon(Icons.upload_file),
         backgroundColor: Colors.blue,
         onPressed: () async {
           prem = premium.text;

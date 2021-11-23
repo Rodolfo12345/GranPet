@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:grand_pet/src/widgest/custom_widgets.dart';
 import 'package:grand_pet/src/widgest/home_widgest.dart';
+
+CollectionReference ventas = FirebaseFirestore.instance.collection("Ventas");
 
 class HomePage extends StatefulWidget {
   static String id = 'home_page';
@@ -129,20 +132,73 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
 
-              /*const Text("Historial de Ventas", 
-                textAlign: TextAlign.center, style: TextStyle(
-                  color: Color(0xff7b333f), 
-                  fontSize: 30,
-                  decoration: 
-                    TextDecoration.underline, 
-                    decorationThickness: 2.5,//grosor del subrayado
-                    height: 2,  
-                ),
-              ),*/
-
+              //generando historial
               Expanded(
-                child: (PaddinHistorial()),
+                child: (StreamBuilder(
+                  stream: ventas.where('Usuario', isEqualTo: 'Rodolfo').snapshots(),
+                  builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot)
+                  {
+                    if(!snapshot.hasData) return const CircularProgressIndicator();
+                    return ListView.builder(
+                      itemCount: snapshot.data!.docs.length,
+                      itemBuilder: (BuildContext context, int index){
+                        var id = snapshot.data!.docs[index].id;
+                        var usuario = snapshot.data!.docs[index].get('Usuario');
+                        var Lote = snapshot.data!.docs[index].get('Lote');
+                        var Holistico = snapshot.data!.docs[index].get('Holistico');
+                        var Premium = snapshot.data!.docs[index].get('Premium');
+                        //var Super = snapshot.data!.docs[index].get('Super Premium');
+                        //var correo = snapshot.data!.docs[index].get('correo');
+                        return Card(
+                          child: Column(
+                            children: [
+                              Text('Usuario: $usuario', 
+                                textAlign: TextAlign.center, 
+                                style: const TextStyle(
+                                  color: Color(0xff7b333f),
+                                  fontSize: 25,
+                                ),
+                              ),
+                              
+                              Text('Lote: $Lote',
+                                textAlign: TextAlign.center, 
+                                style: const TextStyle(
+                                  color: Color(0xff7b333f),
+                                  fontSize: 25
+                                )
+                              ),
+
+                              Text('Holistico: $Holistico',
+                                textAlign: TextAlign.center, 
+                                style: const TextStyle(
+                                  color: Color(0xff7b333f),
+                                  fontSize: 25
+                                )
+                              ),
+
+                              Text('Premium: $Premium',
+                                textAlign: TextAlign.center, 
+                                style: const TextStyle(
+                                  color: Color(0xff7b333f),
+                                  fontSize: 25
+                                )
+                              ),
+
+                              //Text('SuperPremium: $Super'),
+                              Text('id: $id',
+                                textAlign: TextAlign.center, 
+                                style: const TextStyle(
+                                  color: Color(0xff7b333f),
+                                  fontSize: 25
+                                )
+                              )
+                            ],
+                          ),
+                        );
+                    });
+                })
               ),
+            ),
             ],
           ),
         ),

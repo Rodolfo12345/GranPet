@@ -146,17 +146,16 @@ class PaddinHistorial extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        /*Container*/
         padding: const EdgeInsets.symmetric(horizontal: 3),
         child: Container(
-          width: double.infinity,
-          height: 400,
-          decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(10)),
-
+          //width: double.infinity,
+          //height: 400,
+          //decoration: BoxDecoration(
+              //color: Colors.white, borderRadius: BorderRadius.circular(10)),
           //de aqui en adelante tiro codigo el master Noé
-          child: const SliderList(),
+          //child: const SliderList(),
           //de aqui para arriba tiro codigo el master Noé
+
         ),
       ),
     );
@@ -165,7 +164,7 @@ class PaddinHistorial extends StatelessWidget {
 
 //este es el constructor del sliderlist
 
-class SliderList extends StatelessWidget {
+/*class SliderList extends StatelessWidget {
   const SliderList({Key? key}) : super(key: key);
 
   @override
@@ -285,7 +284,7 @@ class _Listitem extends StatelessWidget {
       ),
     );
   }
-}
+}*/
 
 //Status Bar
 class StatusBar extends StatelessWidget {

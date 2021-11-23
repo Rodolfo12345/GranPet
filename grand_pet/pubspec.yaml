@@ -2,7 +2,7 @@ name: grand_pet
 description: A new Flutter project.
 
 publish_to: 'none'
-
+shared_preference:
 version: 1.0.0+1
 
 environment:
@@ -20,6 +20,7 @@ dependencies:
   flutter_svg: ^0.17.3+1
   provider: ^6.0.1
   local_auth:
+  shared_preferences: ^2.0.9
 
 dev_dependencies:
   flutter_test:

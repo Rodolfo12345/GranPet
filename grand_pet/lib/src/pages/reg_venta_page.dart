@@ -37,15 +37,17 @@ class _reg_venta_PageState extends State<VentasPage> {
             child: ListView(
               padding: const EdgeInsets.all(8),
               children: <Widget>[
+
                 Container(
                   height: 50,
                   color: Colors.amber[600],
                   child: const Center(child: Text('Producto A')),
                 ),
-                Lote(),
+
               ],
             ),
           ),
+
           Row(
             children: const [
               Fotografia(),

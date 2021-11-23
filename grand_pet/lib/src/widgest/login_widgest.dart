@@ -1,16 +1,18 @@
-import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:grand_pet/src/pages/home.dart';
 
 //Variables
-var usuario = '';
+//Guardado de los datos que ingreso el usuario
+final user = TextEditingController();
+String userLogin = '';
 
-var password = '';
+var _usuario = '';
 
 //instanciamos la base de datos
 CollectionReference administradores = FirebaseFirestore.instance.collection("Administradores");
-//CollectionReference ventas = FirebaseFirestore.instance.collection("Ventas");
+CollectionReference ventas = FirebaseFirestore.instance.collection("Ventas");
 
 class FondoPrincipal extends StatelessWidget {
   @override
@@ -44,16 +46,17 @@ Widget userTextField() {
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
+          controller: user,//Indicamos el texto que vamos a guardar
           keyboardType: TextInputType.emailAddress,
           cursorColor: const Color(0xfffcbc5c),
+
           decoration: const InputDecoration(
             icon: Icon(Icons.email),
             labelText: 'Usuario',
           ),
 
-          onChanged: (value){
-            
-          },
+          onChanged: (text) => {},
+
         ),
       );
     }
@@ -64,7 +67,7 @@ Widget passwordTextField() {
   return StreamBuilder(
     builder:(BuildContext context, AsyncSnapshot snapshot){
     return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child:TextField(
           keyboardType: TextInputType.emailAddress,
           obscureText: true,
@@ -77,6 +80,7 @@ Widget passwordTextField() {
             
           },
         ),
+        
       );
     }
   );
@@ -98,14 +102,15 @@ Widget bottomLogin() {
         ),
 
         onPressed: () async{
-
+          userLogin = user.text;
           //Verificacion de usuario
-          print('usuarion 2:$usuario');
-
-          if(usuario == 'Rodolfo')
+          //print('usuarion 2:$usuario');
+          Navigator.pushNamed(context, HomePage.id);
+          /*if(_usuario == 'rodovargas600@gmail.com')
           {
+            _incrementCounter();
             Navigator.pushNamed(context, HomePage.id);//Cambio de pagina
-          }
+          }*/
 
           //insertar datos
           /*await administradores.add({
@@ -204,7 +209,7 @@ Widget InicioSesion(){
       body: Center(
         child: (
           StreamBuilder(
-          stream: administradores.where('Usuario', isEqualTo: 'Rodolfo').snapshots(),
+          stream: ventas.where('correo', isEqualTo: 'rodovargas600@gmail.com').snapshots(),
           builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot)
           {
             if(!snapshot.hasData) return const CircularProgressIndicator();
@@ -212,11 +217,11 @@ Widget InicioSesion(){
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (BuildContext context, int index){
                 //String id = snapshot.data!.docs[index].id;
-                usuario = snapshot.data!.docs[index].get('Usuario');
+            _usuario = snapshot.data!.docs[index].get('Usuario');
                 return Card(
                   child: Column(
                     children: [
-                      Text('Usuario: $usuario')
+                      Text('Usuario: $_usuario')
                     ],
                   ),
                 );
@@ -225,5 +230,23 @@ Widget InicioSesion(){
         ),
       ),
     );
+}
+/////////////
+_incrementCounter() async {
+  //Numeros
+  /*SharedPreferences prefs = await SharedPreferences.getInstance();
+  int counter = (prefs.getInt('counter') ?? 0) + 1;
+  print('Pressed $counter times.');
+  await prefs.setInt('counter', counter);*/
+
+  //Texto
+  SharedPreferences log = await SharedPreferences.getInstance();
+  String prueba = (log.getString('Texto') ?? userLogin) + '';
+  if(_usuario != 'Rodolfo11')
+  {
+    await log.clear();
+  }
   
+  print(prueba);
+  //await prefs.setString('Texto', prueba);//Esperar un momento para que se vuelva a poder ejecutar el metodo
 }
