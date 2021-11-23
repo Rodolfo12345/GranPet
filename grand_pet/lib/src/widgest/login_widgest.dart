@@ -209,7 +209,7 @@ Widget InicioSesion(){
       body: Center(
         child: (
           StreamBuilder(
-          stream: ventas.where('correo', isEqualTo: 'rodovargas600@gmail.com').snapshots(),
+          stream: ventas.where('Correo', isEqualTo: 'rodovargas600@gmail.com').snapshots(),
           builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot)
           {
             if(!snapshot.hasData) return const CircularProgressIndicator();
