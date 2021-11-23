@@ -148,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                         var Holistico = snapshot.data!.docs[index].get('Holistico');
                         var Premium = snapshot.data!.docs[index].get('Premium');
                         //var Super = snapshot.data!.docs[index].get('Super Premium');
-                        //var correo = snapshot.data!.docs[index].get('correo');
+                        var Correo = snapshot.data!.docs[index].get('Correo');
                         return Card(
                           child: Column(
                             children: [
@@ -184,7 +184,15 @@ class _HomePageState extends State<HomePage> {
                                 )
                               ),
 
-                              //Text('SuperPremium: $Super'),
+                              
+                              Text('Correo: $Correo',
+                                textAlign: TextAlign.center, 
+                                style: const TextStyle(
+                                  color: Color(0xff7b333f),
+                                  fontSize: 25
+                                )
+                              ),
+
                               Text('id: $id',
                                 textAlign: TextAlign.center, 
                                 style: const TextStyle(
