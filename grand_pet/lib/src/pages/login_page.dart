@@ -9,40 +9,12 @@ class LoginPage extends StatefulWidget{
 }
 
 class _LoginPageState extends State<LoginPage>{
-
-
-  /*@override
-  void initState() {
-    super.initState();
-    getAdministradores();
-  }
-
-  //Funciones
-  void getAdministradores() async{
-    CollectionReference collectionReference = 
-      FirebaseFirestore.instance.collection("Administradores");//hace referencia a la colleccion a obtener
-
-    QuerySnapshot Administradores = await collectionReference.get(); //hacemos una consulta a la coleccion
-    
-    //si la cantidad de documentso es diferente de cero
-    if(Administradores.docs.length != 0) //docs es la cantidad de documentos o registros en la collecion
-    {
-      for (var doc in Administradores.docs) {
-        print(doc.data());
-      }
-    }
-  }*/
-
-
-/////////////////////////////////////////
-
   Widget build(BuildContext context) {
     return SafeArea(
       top: true,
       child: Scaffold(
         body: Center(
           child: Column(
-            //mainAxisAlignment: MainAxisAlignment.center,
             children:[
               Flexible(
                 child: (
@@ -57,7 +29,6 @@ class _LoginPageState extends State<LoginPage>{
               bottomLogin(),
               Flexible(child:InicioSesion())
             ],
-            
           ),
         ),
       ),

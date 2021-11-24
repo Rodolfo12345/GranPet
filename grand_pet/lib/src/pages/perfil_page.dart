@@ -22,17 +22,13 @@ class _PerfilPageState extends State<PerfilPage> {
               Expanded(
                 flex: 6,
                   child: 
-                    Container(
-                      child:
-                        Stack(
-                          children:[
-                            Background(),
-                            Datos()
-                          ]
-                        )
-                    )
-                    
-                )
+                    Stack(
+                      children:[
+                        Background(),
+                        Datos()
+                      ]
+                  )
+              )
             ]
           ),
         ],

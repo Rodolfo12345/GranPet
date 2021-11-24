@@ -3,7 +3,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:grand_pet/src/pages/home.dart';
 
-//Variables
 //Guardado de los datos que ingreso el usuario
 final user = TextEditingController();
 String userLogin = '';
@@ -33,7 +32,6 @@ class FondoPrincipal extends StatelessWidget {
           child: (
             _ImageLogin()
           ), 
-          
         ),
       ),
     );
@@ -88,13 +86,11 @@ Widget passwordTextField() {
 
 Widget bottomLogin() {
   return StreamBuilder(
-
     //Validacion
     stream: administradores.where('Usuario', isEqualTo: 'Rodolfo').snapshots(),
     builder:(BuildContext context,  AsyncSnapshot<QuerySnapshot> snapshot){
 
       if(!snapshot.hasData) return const CircularProgressIndicator();
-
       return ElevatedButton(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
@@ -103,91 +99,7 @@ Widget bottomLogin() {
 
         onPressed: () async{
           userLogin = user.text;
-          //Verificacion de usuario
-          //print('usuarion 2:$usuario');
           Navigator.pushNamed(context, HomePage.id);
-          /*if(_usuario == 'rodovargas600@gmail.com')
-          {
-            _incrementCounter();
-            Navigator.pushNamed(context, HomePage.id);//Cambio de pagina
-          }*/
-
-          //insertar datos
-          /*await administradores.add({
-            'Correo': 'nameUser',
-            'Password': 'ageUser',
-            'Usuario': 'textNote',
-            'id_Administrador': 1
-          }).then((value) => print("Usuario Añadido"));
-          */
-
-          //Modificar datos
-          /*await administradores
-          .doc('dNESyMhvYDLTcToJ5qHI')
-          .update(
-            {
-            'Correo': 'Nuevo usuario',
-            'Password': '1234',
-            }
-          ).then((value) => print("Actualizacion completada"));
-          */
-
-          //Eliminar datos
-          /*await administradores
-          .doc('u7JJ2efJfWPU9pvN6r2H')//Oviamente ya no existe
-          .delete()
-          .then((value) => print("Eliminacion completada"));
-          */
-
-          //Obtener datos globales
-          /*QuerySnapshot users = await administradores.get();
-          if(users.docs.length != 0){
-            for(var doc in users.docs){
-              print(doc.data());
-            }
-          }*/
-          
-          //Consulta de un usuario
-          /*var usuario = await administradores.where('Usuario', isEqualTo: 'Rodolfo')
-          .snapshots()
-          .listen((result){
-            result.docs.forEach((result) {
-              print(result.data());
-            });
-          });*/
-
-          //Listado de usuarios
-          /*FirebaseFirestore.instance
-            .collection('Administradores')
-            .where('Usuario', isEqualTo: 'Rodolfo')
-            .get()
-            .then((resultado) => {
-            resultado.docs.forEach((elementos) {
-              print(elementos.data());
-            })
-          });*/
-
-        /*StreamBuilder(
-          stream: administradores.where('Usuario', isEqualTo: 'Rodolfo').snapshots(),
-          builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot)
-          {
-            if(!snapshot.hasData) return const CircularProgressIndicator();
-            return ListView.builder(
-              itemCount: snapshot.data!.docs.length,
-              itemBuilder: (BuildContext context, int index){
-                //String id = snapshot.data!.docs[index].id;
-                String usuario = snapshot.data!.docs[index].get('Usuario');
-                print(usuario);
-                return Card(
-                  child: Column(
-                    children: [
-                      Text('Usuario: $usuario')
-                    ],
-                  ),
-                );
-              });
-          });*/
-
         });   
     }); 
 }
@@ -210,6 +122,7 @@ Widget InicioSesion(){
         child: (
           StreamBuilder(
           stream: ventas.where('Correo', isEqualTo: 'rodovargas600@gmail.com').snapshots(),
+          
           builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot)
           {
             if(!snapshot.hasData) return const CircularProgressIndicator();
@@ -231,7 +144,7 @@ Widget InicioSesion(){
       ),
     );
 }
-/////////////
+
 _incrementCounter() async {
   //Numeros
   /*SharedPreferences prefs = await SharedPreferences.getInstance();
