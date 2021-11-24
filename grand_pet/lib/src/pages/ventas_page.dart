@@ -9,6 +9,7 @@ class VentasPage extends StatefulWidget {
   String CantidadProductos;
   VentasPage(this.CantidadProductos, {Key? key}) : super(key: key);
 }
+
 int contador = 0;
 
 class _reg_venta_PageState extends State<VentasPage> {
