@@ -204,7 +204,7 @@ class Datos extends StatelessWidget {
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
         ),
-        child: Text('Sucursal: ',
+        child: const Text('Sucursal: ',
             style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grand_pet/src/pages/home.dart';
+import 'package:grand_pet/src/widgest/custom_widgets.dart';
 
 CollectionReference ventas = FirebaseFirestore.instance.collection("Ventas");
 
@@ -214,6 +215,7 @@ class Fotografia extends StatelessWidget {
 
 VentanaEmergente(BuildContext context) {
   TextEditingController controladorPersonalizado = TextEditingController();
+
   return showDialog(
       context: context,
       builder: (context) {
@@ -232,16 +234,20 @@ VentanaEmergente(BuildContext context) {
               elevation: 5.0,
               child: const Text("Continuar"),
               onPressed: () => {
-                Navigator.of(context)
-                    .pop(controladorPersonalizado.text.toString()),
-                print('esto es lo que escribes: $controladorPersonalizado'),
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            VentasPage(controladorPersonalizado.text))),
+                // print(controladorPersonalizado.text),
+                // Navigator.of(context)
+                //     .pop(controladorPersonalizado.text.toString()),
               },
             )
           ],
         );
       });
 }
-
 VentanaEmergente2(BuildContext context) {
   return showDialog(
       context: context,

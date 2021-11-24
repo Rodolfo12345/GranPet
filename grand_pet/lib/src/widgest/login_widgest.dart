@@ -94,7 +94,6 @@ Widget bottomLogin() {
     builder:(BuildContext context,  AsyncSnapshot<QuerySnapshot> snapshot){
 
       if(!snapshot.hasData) return const CircularProgressIndicator();
-
       return ElevatedButton(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
@@ -210,6 +209,7 @@ Widget InicioSesion(){
         child: (
           StreamBuilder(
           stream: ventas.where('Correo', isEqualTo: 'rodovargas600@gmail.com').snapshots(),
+          
           builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot)
           {
             if(!snapshot.hasData) return const CircularProgressIndicator();
