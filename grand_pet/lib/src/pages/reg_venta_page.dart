@@ -2,18 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:grand_pet/src/widgest/venta_widgets.dart';
 
 class VentasPage extends StatefulWidget {
+  VentasPage(this.n_veces, {Key? key}) : super(key: key);
   static String id = 'RegistroVenta_page';
   final String n_veces;
-
-  VentasPage(this.n_veces, {Key? key}) : super(key: key);
-
   @override
   _reg_venta_PageState createState() => _reg_venta_PageState();
 }
-
-//variables
-final _lista = ['Premium', 'Super premium', 'Holistico'];
-String _muestra = 'Opciones';
 
 class _reg_venta_PageState extends State<VentasPage> {
   Widget build(BuildContext context) {
@@ -64,21 +58,15 @@ class _reg_venta_PageState extends State<VentasPage> {
               ],
             ),
             
-
-          
-            //for (var i = 0; i < variable; i++)
-              Row(
-                children:const [
-                  Fotografia(),
-                  Spacer(),
-                  Agregar(),
-                  Spacer(),
-                  BotonGuardar()
-                ],
-              ),
-
-
-
+            Row(
+              children:const [
+                Spacer(),
+                AgregarRegistro(),
+                Spacer(),
+                BotonGuardar(),
+                Spacer(),
+              ],
+            ),
 
           ])
         )

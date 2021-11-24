@@ -13,7 +13,6 @@ void main() async {
   });
 }
 
-/////////////Variables/////////////
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

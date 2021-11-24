@@ -5,13 +5,11 @@ import 'package:grand_pet/src/pages/home.dart';
 import 'package:grand_pet/src/widgest/custom_widgets.dart';
 
 CollectionReference ventas = FirebaseFirestore.instance.collection("Ventas");
-
 ///Obtencion de texto
 final premium = TextEditingController();
 final superPremium = TextEditingController();
 final olistico = TextEditingController();
 
-//Variables globales
 var id = '1';
 var fecha = DateTime.now();
 var usuario = 'Rodolfo';
@@ -26,39 +24,44 @@ class HederVentas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        top: true,
-        child: Padding(
-            /*Container*/
-            padding: const EdgeInsets.symmetric(horizontal: 5),
-            child: Container(
-                margin: const EdgeInsets.only(top: 5),
-                width: double.infinity,
-                height: 150,
-                decoration: BoxDecoration(
-                    color: const Color(0xfffcbc5c),
-                    borderRadius: BorderRadius.circular(20)),
-                child: ListView(children: [
-                  ListTile(
-                    leading: const Icon(
-                      Icons.chevron_left_sharp,
-                      size: 40,
-                      color: Colors.white,
-                    ),
-                    title: const Text(
-                      "Volver",
-                      style: TextStyle(color: Colors.white, fontSize: 25),
-                    ),
-                    onTap: () {
-                      Navigator.pushNamed(context, HomePage.id);
-                    },
-                  ),
-                  const Text('Registrar Ventas',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 40,
-                      ))
-                ]))));
+      top: true,
+      child: Padding(
+          /*Container*/
+          padding: const EdgeInsets.symmetric(horizontal: 5),
+          child: Container(
+            margin: const EdgeInsets.only(top: 5),
+            width: double.infinity,
+            height: 150,
+            decoration: BoxDecoration(
+                color: const Color(0xfffcbc5c),
+                borderRadius: BorderRadius.circular(20)),
+            child: ListView(children: [
+              ListTile(
+                leading: const Icon(
+                  Icons.chevron_left_sharp,
+                  size: 40,
+                  color: Colors.white,
+                ),
+                title: const Text(
+                  "Volver",
+                  style: TextStyle(color: Colors.white, fontSize: 25),
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, HomePage.id);
+                },
+              ),
+              const Text('Registrar Ventas',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 40,
+                )
+              )
+            ]
+          )
+        )
+      )
+    );
   }
 }
 
@@ -94,7 +97,6 @@ Widget Guardar() {
           print('La cantidad de olistico es: $oli');
 
           //Navigator.pushNamed(context, HomePage.id);
-          //Insertar venta
 
           await ventas.add({
             //'idUsuario': id,
@@ -110,61 +112,6 @@ Widget Guardar() {
   });
 }
 
-Widget Premium() {
-  return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: TextField(
-        controller: premium,
-        keyboardType: TextInputType.number,
-        cursorColor: const Color(0xfffcbc5c),
-        decoration: const InputDecoration(
-          icon: Icon(Icons.date_range_outlined),
-          labelText: 'Premium',
-        ),
-        onChanged: (value) {},
-      ),
-    );
-  });
-}
-
-Widget Olistico() {
-  return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: TextField(
-        controller: olistico,
-        keyboardType: TextInputType.number,
-        cursorColor: const Color(0xfffcbc5c),
-        decoration: const InputDecoration(
-          icon: Icon(Icons.date_range_outlined),
-          labelText: 'Olistico',
-        ),
-        onChanged: (value) {},
-      ),
-    );
-  });
-}
-
-Widget SuperPremium() {
-  return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: TextField(
-        controller: superPremium,
-        keyboardType: TextInputType.number,
-        cursorColor: const Color(0xfffcbc5c),
-        decoration: const InputDecoration(
-          icon: Icon(Icons.date_range_outlined),
-          labelText: 'SuperPremium',
-        ),
-        onChanged: (value) {},
-      ),
-    );
-  });
-}
-
-// ESTE CODIGO ES EL QUE GENERA LOS BOTONES Y CREA LAS VENTANAS EMERGENTES
 class BotonGuardar extends StatelessWidget {
   const BotonGuardar({
     Key? key,
@@ -181,8 +128,8 @@ class BotonGuardar extends StatelessWidget {
   }
 }
 
-class Agregar extends StatelessWidget {
-  const Agregar({
+class AgregarRegistro extends StatelessWidget {
+  const AgregarRegistro({
     Key? key,
   }) : super(key: key);
 
