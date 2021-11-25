@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:grand_pet/src/pages/home.dart';
 
 //Guardado de los datos que ingreso el usuario
 final user = TextEditingController();
@@ -61,6 +60,7 @@ Widget userTextField() {
   ); 
 }
 
+
 Widget passwordTextField() {
   return StreamBuilder(
     builder:(BuildContext context, AsyncSnapshot snapshot){
@@ -90,7 +90,6 @@ Widget bottomLogin() {
     stream: administradores.where('Usuario', isEqualTo: 'Rodolfo').snapshots(),
     builder:(BuildContext context,  AsyncSnapshot<QuerySnapshot> snapshot){
 
-      if(!snapshot.hasData) return const CircularProgressIndicator();
       return ElevatedButton(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
@@ -98,8 +97,12 @@ Widget bottomLogin() {
         ),
 
         onPressed: () async{
-          userLogin = user.text;
-          Navigator.pushNamed(context, HomePage.id);
+          //userLogin = user.text;
+          //Navigator.pushNamed(context, HomePage.id);
+
+          //final authService = Provider.of<AuthService>(context, listen: false);
+          //final String? token = await authService.createUser(loginform.email, loginform.password);
+
         });   
     }); 
 }
@@ -116,7 +119,7 @@ Widget _ImageLogin() {
   );
 }
 
-Widget InicioSesion(){
+/*Widget InicioSesion(){
     return Scaffold(
       body: Center(
         child: (
@@ -143,23 +146,4 @@ Widget InicioSesion(){
         ),
       ),
     );
-}
-/*
-_incrementCounter() async {
-  //Numeros
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  int counter = (prefs.getInt('counter') ?? 0) + 1;
-  print('Pressed $counter times.');
-  await prefs.setInt('counter', counter);
-
-  //Texto
-  SharedPreferences log = await SharedPreferences.getInstance();
-  String prueba = (log.getString('Texto') ?? userLogin) + '';
-  if(_usuario != 'Rodolfo11')
-  {
-    await log.clear();
-  }
-  
-  print(prueba);
-  //await prefs.setString('Texto', prueba);//Esperar un momento para que se vuelva a poder ejecutar el metodo
 }*/

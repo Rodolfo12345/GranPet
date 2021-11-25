@@ -135,78 +135,69 @@ class _HomePageState extends State<HomePage> {
               //generando historial
               Expanded(
                 child: (StreamBuilder(
-                  stream: ventas.where('Usuario', isEqualTo: 'Rodolfo').snapshots(),
-                  builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot)
-                  {
-                    if(!snapshot.hasData) return const CircularProgressIndicator();
-                    return ListView.builder(
-                      itemCount: snapshot.data!.docs.length,
-                      itemBuilder: (BuildContext context, int index){
-                        var id = snapshot.data!.docs[index].id;
-                        var usuario = snapshot.data!.docs[index].get('Usuario');
-                        var Lote = snapshot.data!.docs[index].get('Lote');
-                        var Holistico = snapshot.data!.docs[index].get('Holistico');
-                        var Premium = snapshot.data!.docs[index].get('Premium');
-                        //var Super = snapshot.data!.docs[index].get('Super Premium');
-                        var Correo = snapshot.data!.docs[index].get('Correo');
-                        return Card(
-                          child: Column(
-                            children: [
-                              Text('Usuario: $usuario', 
-                                textAlign: TextAlign.center, 
-                                style: const TextStyle(
-                                  color: Color(0xff7b333f),
-                                  fontSize: 25,
-                                ),
+                    stream: ventas
+                        .where('Usuario', isEqualTo: 'Rodolfo')
+                        .snapshots(),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<QuerySnapshot> snapshot) {
+                      if (!snapshot.hasData)
+                        return const CircularProgressIndicator();
+                      return ListView.builder(
+                          itemCount: snapshot.data!.docs.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            var id = snapshot.data!.docs[index].id;
+                            var usuario =
+                                snapshot.data!.docs[index].get('Usuario');
+                            var Lote = snapshot.data!.docs[index].get('Lote');
+                            var Holistico =
+                                snapshot.data!.docs[index].get('Holistico');
+                            var Premium =
+                                snapshot.data!.docs[index].get('Premium');
+                            //var Super = snapshot.data!.docs[index].get('Super Premium');
+                            var Correo =
+                                snapshot.data!.docs[index].get('Correo');
+                            return Card(
+                              child: Column(
+                                children: [
+                                  Text(
+                                    'Usuario: $usuario',
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                      color: Color(0xff7b333f),
+                                      fontSize: 25,
+                                    ),
+                                  ),
+                                  Text('Lote: $Lote',
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                          color: Color(0xff7b333f),
+                                          fontSize: 25)),
+                                  Text('Holistico: $Holistico',
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                          color: Color(0xff7b333f),
+                                          fontSize: 25)),
+                                  Text('Premium: $Premium',
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                          color: Color(0xff7b333f),
+                                          fontSize: 25)),
+                                  Text('Correo: $Correo',
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                          color: Color(0xff7b333f),
+                                          fontSize: 25)),
+                                  Text('id: $id',
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                          color: Color(0xff7b333f),
+                                          fontSize: 25))
+                                ],
                               ),
-
-                              Text('Lote: $Lote',
-                                textAlign: TextAlign.center, 
-                                style: const TextStyle(
-                                  color: Color(0xff7b333f),
-                                  fontSize: 25
-                                )
-                              ),
-
-                              Text('Holistico: $Holistico',
-                                textAlign: TextAlign.center, 
-                                style: const TextStyle(
-                                  color: Color(0xff7b333f),
-                                  fontSize: 25
-                                )
-                              ),
-
-                              Text('Premium: $Premium',
-                                textAlign: TextAlign.center, 
-                                style: const TextStyle(
-                                  color: Color(0xff7b333f),
-                                  fontSize: 25
-                                )
-                              ),
-
-                              
-                              Text('Correo: $Correo',
-                                textAlign: TextAlign.center, 
-                                style: const TextStyle(
-                                  color: Color(0xff7b333f),
-                                  fontSize: 25
-                                )
-                              ),
-
-                              Text('id: $id',
-                                textAlign: TextAlign.center, 
-                                style: const TextStyle(
-                                  color: Color(0xff7b333f),
-                                  fontSize: 25
-                                )
-                              )
-                            ],
-                          ),
-                        );
-                    });
-                })
+                            );
+                          });
+                    })),
               ),
-            ),
             ],
           ),
         ),
