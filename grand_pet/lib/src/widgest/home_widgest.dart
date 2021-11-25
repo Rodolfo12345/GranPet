@@ -131,14 +131,6 @@ class Lateral extends StatelessWidget {
             ],
           ),
         ),
-        /*const SwitchListTile(
-          value: _tema, 
-          onChanged: (value) {
-            setState((){
-              _tema = value;
-              prefs.
-            })
-          }),*/
         const ListTile(
           leading: Icon(
             Icons.settings,

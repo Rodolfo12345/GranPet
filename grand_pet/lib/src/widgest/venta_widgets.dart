@@ -91,7 +91,10 @@ class BotonGuardar extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       heroTag: "guardar",
-      onPressed: () => {print(_controller.asMap())},
+      onPressed: () => {
+        print(_controller.asMap()),
+        Navigator.pushNamed(context, HomePage.id)
+      },
       child: const Icon(Icons.save),
       backgroundColor: Colors.blue,
     );
