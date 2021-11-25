@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:grand_pet/src/pages/perfil_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 CollectionReference administradores =
     FirebaseFirestore.instance.collection("Administradores");
@@ -18,6 +19,7 @@ class Barra_lateral extends StatelessWidget {
     );
   }
 }
+
 //Status Bar de home
 class StatusBar extends StatelessWidget {
   const StatusBar({
@@ -27,24 +29,26 @@ class StatusBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.transparent,
-      bottomOpacity: 0.0,
-      elevation: 0.0,
-      centerTitle: true,
-      iconTheme: const IconThemeData(color: Color(0xfffcbc5c), size: 40),
-      title: const Text("GrandPet",textAlign: TextAlign.center, style: TextStyle(color: Color(0xff7b333f), fontSize: 40)),
-      actions: [
-        IconButton(
-          icon: const Icon(
-            Icons.help,
-            size: 40,
+        backgroundColor: Colors.transparent,
+        bottomOpacity: 0.0,
+        elevation: 0.0,
+        centerTitle: true,
+        iconTheme: const IconThemeData(color: Color(0xfffcbc5c), size: 40),
+        title: const Text("GrandPet",
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Color(0xff7b333f), fontSize: 40)),
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.help,
+              size: 40,
+            ),
+            onPressed: () {},
           ),
-          onPressed: () {},
-        ),
-      ]
-    );
+        ]);
   }
 }
+
 ///Contenido barra lateral
 class Lateral extends StatelessWidget {
   const Lateral({
@@ -127,17 +131,14 @@ class Lateral extends StatelessWidget {
             ],
           ),
         ),
-        const ListTile(
-          leading: Icon(
-            Icons.lightbulb_outline,
-            color: Colors.white,
-            size: 35,
-          ),
-          title: Text(
-            'Tema',
-            style: TextStyle(color: Colors.white, fontSize: 25),
-          ),
-        ),
+        /*const SwitchListTile(
+          value: _tema, 
+          onChanged: (value) {
+            setState((){
+              _tema = value;
+              prefs.
+            })
+          }),*/
         const ListTile(
           leading: Icon(
             Icons.settings,
