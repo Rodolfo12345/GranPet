@@ -2,16 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:grand_pet/src/widgest/venta_widgets.dart';
 
 class VentasPage extends StatefulWidget {
-  VentasPage(this.n_veces, {Key? key}) : super(key: key);
   static String id = 'RegistroVenta_page';
-  final String n_veces;
   @override
   _reg_venta_PageState createState() => _reg_venta_PageState();
+
+  String CantidadProductos;
+  VentasPage(this.CantidadProductos, {Key? key}) : super(key: key);
 }
 
+int contador = 0;
+
 class _reg_venta_PageState extends State<VentasPage> {
+  @override
   Widget build(BuildContext context) {
-    int variable = int.parse(widget.n_veces);
+    contador = int.parse(widget.CantidadProductos);
     return SafeArea(
       top: true,
       child: Scaffold(
@@ -38,28 +42,16 @@ class _reg_venta_PageState extends State<VentasPage> {
               child: ListView(
                 padding: const EdgeInsets.all(8),
                 children: <Widget>[
-                  Container(
-                    height: 50,
-                    color: Colors.amber[600],
-                    child: const Center(child: Text('Producto A')),
-                  ),
+                  for (var i = 0; i < contador; i++)
+                    Lote(),
                 ],
               ),
             ),
             
-            for (var i = 0; i < variable; i++)
-            Row(
-              children: <Widget>[
-                  Container(
-                    height: 50,
-                    color: Colors.amber[600],
-                    child: const Center(child: Text('Producto A')),
-                  ),
-              ],
-            ),
-            
             Row(
               children:const [
+                Spacer(),
+                Fotografia(),
                 Spacer(),
                 AgregarRegistro(),
                 Spacer(),

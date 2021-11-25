@@ -31,13 +31,12 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         primaryColor: Colors.amberAccent,
       ),
-
       //Rutas de slas paginas por nombre asignado de id
       routes: {
         LoginPage.id: (context) => LoginPage(),
         HomePage.id: (context) => HomePage(),
         PerfilPage.id: (context) => PerfilPage(),
-        VentasPage.id: (context) => VentasPage("1"),
+        VentasPage.id: (context) => VentasPage("0"),
       },
     );
   }

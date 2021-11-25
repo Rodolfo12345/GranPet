@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:grand_pet/src/pages/home.dart';
 
 //Guardado de los datos que ingreso el usuario
 final user = TextEditingController();
 String userLogin = '';
-
 var _usuario = '';
 
 //instanciamos la base de datos
@@ -53,7 +51,9 @@ Widget userTextField() {
             labelText: 'Usuario',
           ),
 
-          onChanged: (text) => {},
+          onChanged: (Text) => {
+            
+          },
 
         ),
       );
@@ -144,13 +144,13 @@ Widget InicioSesion(){
       ),
     );
 }
-
+/*
 _incrementCounter() async {
   //Numeros
-  /*SharedPreferences prefs = await SharedPreferences.getInstance();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
   int counter = (prefs.getInt('counter') ?? 0) + 1;
   print('Pressed $counter times.');
-  await prefs.setInt('counter', counter);*/
+  await prefs.setInt('counter', counter);
 
   //Texto
   SharedPreferences log = await SharedPreferences.getInstance();
@@ -162,4 +162,4 @@ _incrementCounter() async {
   
   print(prueba);
   //await prefs.setString('Texto', prueba);//Esperar un momento para que se vuelva a poder ejecutar el metodo
-}
+}*/

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grand_pet/src/pages/home.dart';
-import 'package:grand_pet/src/widgest/custom_widgets.dart';
+import 'package:grand_pet/src/pages/ventas_page.dart';
 
 CollectionReference ventas = FirebaseFirestore.instance.collection("Ventas");
 ///Obtencion de texto
@@ -20,45 +20,46 @@ String prem = '';
 String sup = '';
 String oli = '';
 
+String tipoProducto = '';
+
 class HederVentas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       top: true,
       child: Padding(
-          /*Container*/
-          padding: const EdgeInsets.symmetric(horizontal: 5),
-          child: Container(
-            margin: const EdgeInsets.only(top: 5),
-            width: double.infinity,
-            height: 150,
-            decoration: BoxDecoration(
-                color: const Color(0xfffcbc5c),
-                borderRadius: BorderRadius.circular(20)),
-            child: ListView(children: [
-              ListTile(
-                leading: const Icon(
-                  Icons.chevron_left_sharp,
-                  size: 40,
-                  color: Colors.white,
-                ),
-                title: const Text(
-                  "Volver",
-                  style: TextStyle(color: Colors.white, fontSize: 25),
-                ),
-                onTap: () {
-                  Navigator.pushNamed(context, HomePage.id);
-                },
+        padding: const EdgeInsets.symmetric(horizontal: 5),
+        child: Container(
+          margin: const EdgeInsets.only(top: 5),
+          width: double.infinity,
+          height: 150,
+          decoration: BoxDecoration(
+              color: const Color(0xfffcbc5c),
+              borderRadius: BorderRadius.circular(20)),
+          child: ListView(children: [
+            ListTile(
+              leading: const Icon(
+                Icons.chevron_left_sharp,
+                size: 40,
+                color: Colors.white,
               ),
-              const Text('Registrar Ventas',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 40,
-                )
+              title: const Text(
+                "Volver",
+                style: TextStyle(color: Colors.white, fontSize: 25),
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, HomePage.id);
+              },
+            ),
+            const Text('Registrar Ventas',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 40,
               )
-            ]
-          )
+            )
+          ]
+        )
         )
       )
     );
@@ -79,36 +80,6 @@ Widget Lote() {
         onChanged: (value) {},
       ),
     );
-  });
-}
-
-Widget Guardar() {
-  return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
-    return FloatingActionButton(
-        child: const Icon(Icons.upload_file),
-        backgroundColor: Colors.blue,
-        onPressed: () async {
-          prem = premium.text;
-          sup = superPremium.text;
-          oli = olistico.text;
-
-          print('La cantidad de premium es: $prem');
-          print('La cantidad de superPremium es: $sup');
-          print('La cantidad de olistico es: $oli');
-
-          //Navigator.pushNamed(context, HomePage.id);
-
-          await ventas.add({
-            //'idUsuario': id,
-            'Fecha': fecha,
-            'Usuario': usuario,
-            'Lote': lote,
-            'Premium': prem,
-            'Super premium': sup,
-            'Holistico': oli,
-            'estado': estado
-          }).then((value) => print("Venta Agregada Exitosamente"));
-        });
   });
 }
 
@@ -162,7 +133,6 @@ class Fotografia extends StatelessWidget {
 
 VentanaEmergente(BuildContext context) {
   TextEditingController controladorPersonalizado = TextEditingController();
-
   return showDialog(
       context: context,
       builder: (context) {
@@ -181,11 +151,7 @@ VentanaEmergente(BuildContext context) {
               elevation: 5.0,
               child: const Text("Continuar"),
               onPressed: () => {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            VentasPage(controladorPersonalizado.text))),
+                Navigator.push(context,MaterialPageRoute(builder: (context) =>VentasPage(controladorPersonalizado.text))),
                 // print(controladorPersonalizado.text),
                 // Navigator.of(context)
                 //     .pop(controladorPersonalizado.text.toString()),
@@ -202,18 +168,63 @@ VentanaEmergente2(BuildContext context) {
         return AlertDialog(
           title: const Text('¿Que producto deseas registrar?'),
           actions: [
+            TextButton(              
+              onPressed: () => {
+                if(contador == 0)
+                {
+                  VentanaEmergente(context),
+                  tipoProducto = 'Premium'
+                }
+                else{
+                  Alerta(context)
+                }
+              },
+              child: const Text('Premium')),
             TextButton(
-                onPressed: () => {VentanaEmergente(context)},
-                child: const Text('Premium')),
+              onPressed: () => {
+                if(contador == 0)
+                {
+                  VentanaEmergente(context),
+                  tipoProducto = 'SuperPremium'
+                }
+                else{
+                  Alerta(context)
+                }
+              },
+              child: const Text('Super premium')),
             TextButton(
-                onPressed: () => {VentanaEmergente(context)},
-                child: const Text('Super premium')),
-            TextButton(
-                onPressed: () => {VentanaEmergente(context)},
-                child: const Text('Holistico'))
+              onPressed: () => {
+                if(contador == 0)
+                {
+                  VentanaEmergente(context),
+                  tipoProducto = 'Olistico'
+                }
+                else{
+                  Alerta(context)
+                }
+              },
+              child: const Text('Holistico'))
           ],
         );
       });
+}
+
+Alerta(BuildContext context) {
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text('Por Favor Completa El Registro'),
+        actions: [
+          TextButton(onPressed: () => {
+             Navigator.pop(context),
+             Navigator.pop(context)
+          }, 
+          child: const Text('Aceptar'))
+        ],
+      );
+    }
+  );
 }
 //AQUI TERMINA EL CODIGO QUE GENERA LOS BOTONES Y CREA LAS VENTANAS EMERGENTES
 
@@ -278,3 +289,33 @@ if(users.docs.length != 0){
     print(elementos.data());
   })
 });*/
+
+Widget Guardar() {
+  return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
+    return FloatingActionButton(
+        child: const Icon(Icons.upload_file),
+        backgroundColor: Colors.blue,
+        onPressed: () async {
+          prem = premium.text;
+          sup = superPremium.text;
+          oli = olistico.text;
+
+          print('La cantidad de premium es: $prem');
+          print('La cantidad de superPremium es: $sup');
+          print('La cantidad de olistico es: $oli');
+
+          //Navigator.pushNamed(context, HomePage.id);
+
+          await ventas.add({
+            //'idUsuario': id,
+            'Fecha': fecha,
+            'Usuario': usuario,
+            'Lote': lote,
+            'Premium': prem,
+            'Super premium': sup,
+            'Holistico': oli,
+            'estado': estado
+          }).then((value) => print("Venta Agregada Exitosamente"));
+        });
+  });
+}
