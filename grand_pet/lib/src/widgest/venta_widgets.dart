@@ -68,17 +68,39 @@ Widget Lote() {
           icon: Icon(Icons.date_range_outlined),
           labelText: 'Lote',
         ),
-        onChanged: (value) {//1
-            _controller.add(texto.toString());
-          //print(texto);
-        },
-        onEditingComplete: (){
-          print('9999999999999999999999999999999999999999999999999999999999999999999999999999999999');
-        },
+
+        onChanged: (
+          _onUpdated: (int index, String val) async {//1
+            int foundkey = -1;
+            for(var map in _mijson)
+            {
+              if(map.containskey('id'))
+              {
+                if(map['id'] == index)
+                {
+                  foundkey = index;
+                  break;
+                }
+              }
+            }
+            if(-1 != foundkey)
+            {
+              _mijson.removeWherez((map)){
+                return map[id] == foundkey;
+              }
+            }
+            Map<String, dynamic> json = {
+              'id': index,
+              'value': val,
+            };
+            _mijson.add(json);
+          },
+        ),
       ),
     );
   });
 }
+
 class BotonGuardar extends StatelessWidget {
   const BotonGuardar({
     Key? key,
@@ -90,7 +112,7 @@ class BotonGuardar extends StatelessWidget {
       return FloatingActionButton(
         heroTag: "guardar",
         onPressed: () async{
-          print(_controller.asMap());
+          print(_mijason.asMap());
 
           //_controller.forEach((String controll) => print(controll));
           //for (var i = 0; i < 6; i++)

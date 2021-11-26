@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         primaryColor: Colors.amberAccent,
+        
       ),
       //Rutas de slas paginas por nombre asignado de id
       routes: {

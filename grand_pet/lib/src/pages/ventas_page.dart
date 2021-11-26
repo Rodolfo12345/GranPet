@@ -43,7 +43,7 @@ class _reg_venta_PageState extends State<VentasPage> {
                 padding: const EdgeInsets.all(8),
                 children: <Widget>[
                   for (var i = 0; i < contador; i++)
-                    Lote(),
+                    Lote(i),
                 ],
               ),
             ),
