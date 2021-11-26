@@ -33,7 +33,7 @@ class AuthService extends ChangeNotifier {
   }
 }
 
-///////
+////
 class LoginFormProvider extends ChangeNotifier {
 
   GlobalKey<FormState> formKey = new GlobalKey<FormState>();
