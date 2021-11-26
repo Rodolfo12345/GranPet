@@ -69,33 +69,6 @@ Widget Lote() {
           labelText: 'Lote',
         ),
 
-        onChanged: (
-          _onUpdated: (int index, String val) async {//1
-            int foundkey = -1;
-            for(var map in _mijson)
-            {
-              if(map.containskey('id'))
-              {
-                if(map['id'] == index)
-                {
-                  foundkey = index;
-                  break;
-                }
-              }
-            }
-            if(-1 != foundkey)
-            {
-              _mijson.removeWherez((map)){
-                return map[id] == foundkey;
-              }
-            }
-            Map<String, dynamic> json = {
-              'id': index,
-              'value': val,
-            };
-            _mijson.add(json);
-          },
-        ),
       ),
     );
   });
@@ -112,8 +85,6 @@ class BotonGuardar extends StatelessWidget {
       return FloatingActionButton(
         heroTag: "guardar",
         onPressed: () async{
-          print(_mijason.asMap());
-
           //_controller.forEach((String controll) => print(controll));
           //for (var i = 0; i < 6; i++)
           
