@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:grand_pet/src/pages/home.dart';
 
 //Guardado de los datos que ingreso el usuario
 final user = TextEditingController();
@@ -98,7 +99,7 @@ Widget bottomLogin() {
 
         onPressed: () async{
           //userLogin = user.text;
-          //Navigator.pushNamed(context, HomePage.id);
+          Navigator.pushNamed(context, HomePage.id);
 
           //final authService = Provider.of<AuthService>(context, listen: false);
           //final String? token = await authService.createUser(loginform.email, loginform.password);

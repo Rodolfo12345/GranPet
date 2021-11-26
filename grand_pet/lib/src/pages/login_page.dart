@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grand_pet/src/widgest/custom_widgets.dart';
 import 'package:grand_pet/ui/input_decorations.dart';
-//import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget{
   static String id = 'login_page';
@@ -33,8 +33,8 @@ class _LoginPageState extends State<LoginPage>{
                 
                 /*ChangeNotifierProvider(
                   create: ( _ ) => LoginFormProvider(),
-                ),*/
-                /*_LoginForm(),
+                ),
+                const _LoginForm(),
                 const SizedBox(height: 50),
                 const Text('Crear una nueva cuenta', style: TextStyle(fontSize: 18)),
                 const SizedBox(height: 50),*/
@@ -53,12 +53,12 @@ class _LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    //final LoginForm = Provider.of<LoginFormProvider>(context);
+    final LoginForm = Provider.of<LoginFormProvider>(context);
 
     return Container(
       child: Form(
         //Mantener la referencia del key
-        //key: LoginForm.formkey,
+        key: LoginForm.formkey,
         
         child: Column(
           children: [
