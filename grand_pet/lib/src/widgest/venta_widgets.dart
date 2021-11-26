@@ -6,82 +6,79 @@ import 'package:grand_pet/src/pages/ventas_page.dart';
 
 CollectionReference ventas = FirebaseFirestore.instance.collection("Ventas");
 
-///Obtencion de texto
-final premium = TextEditingController();
-final superPremium = TextEditingController();
-final olistico = TextEditingController();
-
-var id = '1';
 var fecha = DateTime.now();
+var lote = '';
 var usuario = 'Rodolfo';
-var lote = '999999';
 var estado = true;
-
-String prem = '';
-String sup = '';
-String oli = '';
-
 String tipoProducto = '';
 
 class HederVentas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        top: true,
-        child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5),
-            child: Container(
-                margin: const EdgeInsets.only(top: 5),
-                width: double.infinity,
-                height: 150,
-                decoration: BoxDecoration(
-                    color: const Color(0xfffcbc5c),
-                    borderRadius: BorderRadius.circular(20)),
-                child: ListView(children: [
-                  ListTile(
-                    leading: const Icon(
-                      Icons.chevron_left_sharp,
-                      size: 40,
-                      color: Colors.white,
-                    ),
-                    title: const Text(
-                      "Volver",
-                      style: TextStyle(color: Colors.white, fontSize: 25),
-                    ),
-                    onTap: () {
-                      Navigator.pushNamed(context, HomePage.id);
-                    },
-                  ),
-                  const Text('Registrar Ventas',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 40,
-                      ))
-                ]))));
+      top: true,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5),
+        child: Container(
+            margin: const EdgeInsets.only(top: 5),
+            width: double.infinity,
+            height: 150,
+            decoration: BoxDecoration(
+                color: const Color(0xfffcbc5c),
+                borderRadius: BorderRadius.circular(20)),
+            child: ListView(children: [
+              ListTile(
+                leading: const Icon(
+                  Icons.chevron_left_sharp,
+                  size: 40,
+                  color: Colors.white,
+                ),
+                title: const Text(
+                  "Volver",
+                  style: TextStyle(color: Colors.white, fontSize: 25),
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, HomePage.id);
+                },
+              ),
+              const Text('Registrar Ventas',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 40,
+                  ))
+            ]
+          )
+        )
+      )
+    );
   }
 }
-
-final List<String> _controller = [];
+List<String> _controller = ['holamundo'];
 Widget Lote() {
+  TextEditingController texto = TextEditingController();
   return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: TextField(
+        controller: texto,
         keyboardType: TextInputType.emailAddress,
         cursorColor: const Color(0xfffcbc5c),
         decoration: const InputDecoration(
           icon: Icon(Icons.date_range_outlined),
           labelText: 'Lote',
         ),
-        onChanged: (value) {
-          _controller.add(value);
+        onChanged: (value) {//1
+            _controller.add(texto.toString());
+          //print(texto);
+        },
+        onEditingComplete: (){
+          print('9999999999999999999999999999999999999999999999999999999999999999999999999999999999');
         },
       ),
     );
   });
 }
-
 class BotonGuardar extends StatelessWidget {
   const BotonGuardar({
     Key? key,
@@ -89,14 +86,32 @@ class BotonGuardar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
-      heroTag: "guardar",
-      onPressed: () => {
-        print(_controller.asMap()),
-        Navigator.pushNamed(context, HomePage.id)
-      },
-      child: const Icon(Icons.save),
-      backgroundColor: Colors.blue,
+    return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
+      return FloatingActionButton(
+        heroTag: "guardar",
+        onPressed: () async{
+          print(_controller.asMap());
+
+          //_controller.forEach((String controll) => print(controll));
+          //for (var i = 0; i < 6; i++)
+          
+            /*await ventas.add({
+              'Usuario': usuario,//1
+              'Lote': lote,
+              'Producto': tipoProducto,//1
+              'Fecha': fecha,//1
+              'estado': estado
+            });.then((value) => print("Venta Agregada Exitosamente"));*/
+          
+          Navigator.pushNamed(context, HomePage.id);
+          //_controller.removeWhere((item) => item.length == 1);
+          //print(_controller.asMap());
+
+        },
+        child: const Icon(Icons.save),
+        backgroundColor: Colors.blue,
+      );
+    }
     );
   }
 }
@@ -284,33 +299,3 @@ if(users.docs.length != 0){
     print(elementos.data());
   })
 });*/
-
-Widget Guardar() {
-  return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
-    return FloatingActionButton(
-        child: const Icon(Icons.upload_file),
-        backgroundColor: Colors.blue,
-        onPressed: () async {
-          prem = premium.text;
-          sup = superPremium.text;
-          oli = olistico.text;
-
-          print('La cantidad de premium es: $prem');
-          print('La cantidad de superPremium es: $sup');
-          print('La cantidad de olistico es: $oli');
-
-          //Navigator.pushNamed(context, HomePage.id);
-
-          await ventas.add({
-            //'idUsuario': id,
-            'Fecha': fecha,
-            'Usuario': usuario,
-            'Lote': lote,
-            'Premium': prem,
-            'Super premium': sup,
-            'Holistico': oli,
-            'estado': estado
-          }).then((value) => print("Venta Agregada Exitosamente"));
-        });
-  });
-}

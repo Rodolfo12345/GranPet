@@ -47,7 +47,7 @@ class _reg_venta_PageState extends State<VentasPage> {
                 ],
               ),
             ),
-            
+
             Row(
               children:const [
                 Spacer(),
