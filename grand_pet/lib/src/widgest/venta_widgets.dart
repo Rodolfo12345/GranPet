@@ -16,45 +16,42 @@ class HederVentas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      top: true,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5),
-        child: Container(
-            margin: const EdgeInsets.only(top: 5),
-            width: double.infinity,
-            height: 150,
-            decoration: BoxDecoration(
-                color: const Color(0xfffcbc5c),
-                borderRadius: BorderRadius.circular(20)),
-            child: ListView(children: [
-              ListTile(
-                leading: const Icon(
-                  Icons.chevron_left_sharp,
-                  size: 40,
-                  color: Colors.white,
-                ),
-                title: const Text(
-                  "Volver",
-                  style: TextStyle(color: Colors.white, fontSize: 25),
-                ),
-                onTap: () {
-                  Navigator.pushNamed(context, HomePage.id);
-                },
-              ),
-              const Text('Registrar Ventas',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 40,
-                  ))
-            ]
-          )
-        )
-      )
-    );
+        top: true,
+        child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5),
+            child: Container(
+                margin: const EdgeInsets.only(top: 5),
+                width: double.infinity,
+                height: 150,
+                decoration: BoxDecoration(
+                    color: const Color(0xfffcbc5c),
+                    borderRadius: BorderRadius.circular(20)),
+                child: ListView(children: [
+                  ListTile(
+                    leading: const Icon(
+                      Icons.chevron_left_sharp,
+                      size: 40,
+                      color: Colors.white,
+                    ),
+                    title: const Text(
+                      "Volver",
+                      style: TextStyle(color: Colors.white, fontSize: 25),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, HomePage.id);
+                    },
+                  ),
+                  const Text('Registrar Ventas',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 40,
+                      ))
+                ]))));
   }
 }
-List<String> _controller = ['holamundo'];
+
+List<String> _controller = [];
 Widget Lote() {
   TextEditingController texto = TextEditingController();
   return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -68,17 +65,21 @@ Widget Lote() {
           icon: Icon(Icons.date_range_outlined),
           labelText: 'Lote',
         ),
-        onChanged: (value) {//1
-            _controller.add(texto.toString());
-          //print(texto);
+        onChanged: (value) {
+          //_controller.add(texto.toString());
         },
-        onEditingComplete: (){
-          print('9999999999999999999999999999999999999999999999999999999999999999999999999999999999');
+        autofocus: true,
+        onSubmitted: (value) {
+          print(
+              '9999999999999999999999999999999999999999999999999999999999999999999999999999999999');
+          _controller.add(texto.toString());
         },
+        textInputAction: TextInputAction.next,
       ),
     );
   });
 }
+
 class BotonGuardar extends StatelessWidget {
   const BotonGuardar({
     Key? key,
@@ -86,33 +87,32 @@ class BotonGuardar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
+    return StreamBuilder(
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
       return FloatingActionButton(
         heroTag: "guardar",
-        onPressed: () async{
+        onPressed: () async {
           print(_controller.asMap());
-
+          _controller = [];
           //_controller.forEach((String controll) => print(controll));
           //for (var i = 0; i < 6; i++)
-          
-            /*await ventas.add({
+
+          /*await ventas.add({
               'Usuario': usuario,//1
               'Lote': lote,
               'Producto': tipoProducto,//1
               'Fecha': fecha,//1
               'estado': estado
             });.then((value) => print("Venta Agregada Exitosamente"));*/
-          
+
           Navigator.pushNamed(context, HomePage.id);
           //_controller.removeWhere((item) => item.length == 1);
           //print(_controller.asMap());
-
         },
         child: const Icon(Icons.save),
         backgroundColor: Colors.blue,
       );
-    }
-    );
+    });
   }
 }
 

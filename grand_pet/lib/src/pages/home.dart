@@ -157,41 +157,37 @@ class _HomePageState extends State<HomePage> {
                             var Correo =
                                 snapshot.data!.docs[index].get('Correo');
                             return Card(
+                              color: Colors.black12,
                               child: Column(
                                 children: [
                                   Text(
                                     'Usuario: $usuario',
                                     textAlign: TextAlign.center,
                                     style: const TextStyle(
-                                      color: Color(0xff7b333f),
+                                      color: Colors.white,
                                       fontSize: 25,
                                     ),
                                   ),
                                   Text('Lote: $Lote',
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(
-                                          color: Color(0xff7b333f),
-                                          fontSize: 25)),
+                                          color: Colors.white, fontSize: 25)),
                                   Text('Holistico: $Holistico',
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(
-                                          color: Color(0xff7b333f),
-                                          fontSize: 25)),
+                                          color: Colors.white, fontSize: 25)),
                                   Text('Premium: $Premium',
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(
-                                          color: Color(0xff7b333f),
-                                          fontSize: 25)),
+                                          color: Colors.white, fontSize: 25)),
                                   Text('Correo: $Correo',
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(
-                                          color: Color(0xff7b333f),
-                                          fontSize: 25)),
+                                          color: Colors.white, fontSize: 25)),
                                   Text('id: $id',
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(
-                                          color: Color(0xff7b333f),
-                                          fontSize: 25))
+                                          color: Colors.white, fontSize: 25))
                                 ],
                               ),
                             );
