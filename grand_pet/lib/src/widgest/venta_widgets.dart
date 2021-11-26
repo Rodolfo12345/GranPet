@@ -51,8 +51,27 @@ class HederVentas extends StatelessWidget {
   }
 }
 
-List<String> _controller = [];
-Widget Lote() {
+_onUpdate(int index, String val) async {
+  int foundkey = -1;
+  for (var map in _mijson) {
+    if (map.containsKey("id")) {
+      if (map["id"] == index) {
+        foundkey = index;
+        break;
+      }
+    }
+  }
+  if (-1 != foundkey) {
+    _mijson.removeWhere((map) {
+      return map["id"] == foundkey;
+    });
+  }
+  Map<String, dynamic> json = {"id": index, "value": val};
+  _mijson.add(json);
+}
+
+List<Map<String, dynamic>> _mijson = [];
+Widget Lote(int index) {
   TextEditingController texto = TextEditingController();
   return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
     return Container(
@@ -66,14 +85,9 @@ Widget Lote() {
           labelText: 'Lote',
         ),
         onChanged: (value) {
-          //_controller.add(texto.toString());
+          _onUpdate(index, value);
         },
         autofocus: true,
-        onSubmitted: (value) {
-          print(
-              '9999999999999999999999999999999999999999999999999999999999999999999999999999999999');
-          _controller.add(texto.toString());
-        },
         textInputAction: TextInputAction.next,
       ),
     );
@@ -92,8 +106,9 @@ class BotonGuardar extends StatelessWidget {
       return FloatingActionButton(
         heroTag: "guardar",
         onPressed: () async {
-          print(_controller.asMap());
-          _controller = [];
+          print(_mijson.asMap());
+          _mijson.clear();
+          Navigator.pushNamed(context, HomePage.id);
           //_controller.forEach((String controll) => print(controll));
           //for (var i = 0; i < 6; i++)
 
@@ -105,7 +120,6 @@ class BotonGuardar extends StatelessWidget {
               'estado': estado
             });.then((value) => print("Venta Agregada Exitosamente"));*/
 
-          Navigator.pushNamed(context, HomePage.id);
           //_controller.removeWhere((item) => item.length == 1);
           //print(_controller.asMap());
         },
