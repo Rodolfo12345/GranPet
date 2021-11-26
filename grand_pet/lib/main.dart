@@ -28,12 +28,17 @@ class MyApp extends StatelessWidget {
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
+<<<<<<< HEAD
+        primaryColor: Colors.amberAccent,
+        
+=======
         canvasColor: Colors.black87,
         backgroundColor: Colors.black87,
         primaryColor: Colors.teal.shade400,
         primaryColorBrightness: Brightness.dark,
         dialogTheme: DialogTheme(backgroundColor: Colors.blueGrey.shade900),
         dialogBackgroundColor: Colors.white,
+>>>>>>> 29665279def7cca65c1ae1ae6d7653fa071fed77
       ),
 
       //Rutas de slas paginas por nombre asignado de id
