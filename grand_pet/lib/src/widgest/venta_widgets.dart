@@ -98,7 +98,6 @@ class BotonGuardar extends StatelessWidget {
   const BotonGuardar({
     Key? key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
@@ -109,19 +108,6 @@ class BotonGuardar extends StatelessWidget {
           print(_mijson.asMap());
           _mijson.clear();
           Navigator.pushNamed(context, HomePage.id);
-          //_controller.forEach((String controll) => print(controll));
-          //for (var i = 0; i < 6; i++)
-
-          /*await ventas.add({
-              'Usuario': usuario,//1
-              'Lote': lote,
-              'Producto': tipoProducto,//1
-              'Fecha': fecha,//1
-              'estado': estado
-            });.then((value) => print("Venta Agregada Exitosamente"));*/
-
-          //_controller.removeWhere((item) => item.length == 1);
-          //print(_controller.asMap());
         },
         child: const Icon(Icons.save),
         backgroundColor: Colors.blue,
